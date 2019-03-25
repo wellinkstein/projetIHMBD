@@ -73,18 +73,16 @@ public class ProjetIHMBD extends Application {
         toolBar.getItems().add(rightSpacer);
         toolBar.getItems().add(buttonExit);
         
-        //ajout de l'image cross menu au bouton home
-        Image image_cross = new Image (ProjetIHMBD.class.getResourceAsStream("images/cross.png"));
-        ImageView mon_imageview_cross = new ImageView(image_cross);
-        mon_imageview_cross.setFitHeight(20);
-        mon_imageview_cross.setPreserveRatio(true);
-        buttonExit.setGraphic(mon_imageview_cross);
-        
         //évenement souris pour le bouton exit      
         buttonExit.setOnAction(h -> {            
             primaryStage.close();
          
         });
+        
+        // Affichage de la connexion lors du démarrage de l'application
+        Connexion connexion = new Connexion();
+        root.getChildren().add(connexion);
+        
         primaryStage.show(); 
         
       
