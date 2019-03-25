@@ -97,12 +97,12 @@ public class Connexion extends Parent {
         GridPane.setHalignment(typeUser, HPos.LEFT);
         
         buttonValider.setOnAction(j -> {
-            String val = connexionUtilisateur(userField.getText(), mdpField.getText(), typeUser.getValue().toString(), listeUtilisateurs);
-            if (val.equals("")){
-                validationText.setText("Erreur de connexion");
+            boolean co = connexionUtilisateur(userField.getText(), mdpField.getText(), typeUser.getValue().toString(), listeUtilisateurs);
+            if (co){
+                validationText.setText("Connexion réussie");
             }
             else{
-                validationText.setText("Connexion réussie");
+                validationText.setText("Erreur connexion");
             }
         });
         
@@ -110,14 +110,23 @@ public class Connexion extends Parent {
         
     }
     
-    public String connexionUtilisateur(String nomUtilisateur, String mdp, String typeUtilisateur, ArrayList<Utilisateur> listeUtilisateurs){
+    /**
+     * Méthode pour connecté un utilisateur et retourner le type d'utilisateur connecte.
+     * @param nomUtilisateur
+     * @param mdp
+     * @param typeUtilisateur
+     * @param listeUtilisateurs
+     * @return 
+     */
+    
+    public boolean connexionUtilisateur(String nomUtilisateur, String mdp, String typeUtilisateur, ArrayList<Utilisateur> listeUtilisateurs){
         for (Utilisateur u : listeUtilisateurs) {
             if (u.getTypeUtilisateur().equals(typeUtilisateur) & u.getNomUtilisateur().equals(nomUtilisateur) & u.getMDP().equals(mdp)){
                 u.setEstConnecte(true);
-                return typeUtilisateur;
+                return true;
             }
         }
-        return "";
+        return false;
     }
     
     

@@ -33,7 +33,7 @@ public class ProjetIHMBD extends Application {
         Group root = new Group();
         
         //création d'une liste d'utilisateur
-        ArrayList<Utilisateur> utilisateurs = new ArrayList<Utilisateur>();
+        ArrayList<Utilisateur> utilisateurs = new ArrayList<>();
         Utilisateur u1 = new Utilisateur ("U1", "111", "Laborantin");
         Utilisateur u2 = new Utilisateur ("U2", "222", "Chercheur");
         utilisateurs.add(u1);
@@ -105,6 +105,29 @@ public class ProjetIHMBD extends Application {
     public static void main(String[] args) {
     launch(args);
     
+    }
+    
+    /**
+     * Méthode pour déterminer le type d'utilisateur connecté.
+     * @param listeUtilisateur
+     * @return 
+     */
+    public String typeUtilisateurConnecte(ArrayList<Utilisateur> listeUtilisateur) {
+        boolean uConnecte = false;
+        String typeUtilisateur ="";
+        for (Utilisateur u : listeUtilisateur){
+            if(u.getEstConnecte() == true){
+                uConnecte = true;
+                typeUtilisateur = u.getTypeUtilisateur();
+            }
+        }
+        
+        if (uConnecte){
+            return typeUtilisateur;
+        }
+        else{
+            return "";
+        }
     }
 
 }
