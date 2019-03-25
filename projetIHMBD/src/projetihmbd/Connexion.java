@@ -5,6 +5,7 @@
  */
 package projetihmbd;
 
+import java.util.ArrayList;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -29,7 +30,7 @@ public class Connexion extends Parent {
      * Constructeur pour la classe connexion
      */
     
-    public Connexion(){
+    public Connexion(ArrayList<Utilisateur> listeUtilisateurs){
         
         // titre
         
@@ -50,7 +51,7 @@ public class Connexion extends Parent {
         
         Button buttonValider = new Button ("Valider");
         
-// création des champs
+        // création des champs
         
         TextField userField = new TextField();
         TextField mdpField = new TextField();
@@ -95,8 +96,28 @@ public class Connexion extends Parent {
         GridPane.setHalignment(typeUserText, HPos.LEFT);
         GridPane.setHalignment(typeUser, HPos.LEFT);
         
+        buttonValider.setOnAction(j -> {
+            String val = connexionUtilisateur(userField.getText(), mdpField.getText(), typeUser.getValue().toString(), listeUtilisateurs);
+            if (val.equals("")){
+                validationText.setText("Erreur de connexion");
+            }
+            else{
+                validationText.setText("Connexion réussie");
+            }
+        });
+        
         this.getChildren().add(gridpane); 
         
+    }
+    
+    public String connexionUtilisateur(String nomUtilisateur, String mdp, String typeUtilisateur, ArrayList<Utilisateur> listeUtilisateurs){
+        for (Utilisateur u : listeUtilisateurs) {
+            if (u.getTypeUtilisateur().equals(typeUtilisateur) & u.getNomUtilisateur().equals(nomUtilisateur) & u.getMDP().equals(mdp)){
+                u.setEstConnecte(true);
+                return typeUtilisateur;
+            }
+        }
+        return "";
     }
     
     

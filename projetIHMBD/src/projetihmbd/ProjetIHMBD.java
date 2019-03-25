@@ -5,14 +5,13 @@
  */
 package projetihmbd;
 
+import java.util.ArrayList;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToolBar;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
@@ -32,10 +31,18 @@ public class ProjetIHMBD extends Application {
     public void start(Stage primaryStage) {
         
         Group root = new Group();
+        
+        //création d'une liste d'utilisateur
+        ArrayList<Utilisateur> utilisateurs = new ArrayList<Utilisateur>();
+        Utilisateur u1 = new Utilisateur ("U1", "111", "Laborantin");
+        Utilisateur u2 = new Utilisateur ("U2", "222", "Chercheur");
+        utilisateurs.add(u1);
+        utilisateurs.add(u2);
 
-
-        //creation d'une toolbar
-        ToolBar toolBar = new ToolBar();
+        //creation des toolbar
+        ToolBar toolBar = new ToolBar(); // toolbar par défaut
+        ToolBar toolBarLab = new ToolBar(); // toolbar laborantin
+        ToolBar toolBarChe = new ToolBar(); // toolbar chercheur
         
         
         // création de 2 vBox différentes
@@ -69,9 +76,11 @@ public class ProjetIHMBD extends Application {
                 Priority.SOMETIMES
         );
         
-        Button buttonExit = new Button("");
+        Button buttonExit = new Button("X");
         toolBar.getItems().add(rightSpacer);
         toolBar.getItems().add(buttonExit);
+        
+        Connexion connexion = new Connexion(utilisateurs);
         
         //évenement souris pour le bouton exit      
         buttonExit.setOnAction(h -> {            
@@ -79,8 +88,13 @@ public class ProjetIHMBD extends Application {
          
         });
         
+        buttonConnexion.setOnAction(h -> {
+            root.getChildren().clear();
+            root.getChildren().add(connexion);
+        });
+        
         // Affichage de la connexion lors du démarrage de l'application
-        Connexion connexion = new Connexion();
+        
         root.getChildren().add(connexion);
         
         primaryStage.show(); 
