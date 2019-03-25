@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package javafxapplication12;
+package projetihmbd;
 
 import javafx.scene.control.CheckBox;
 
@@ -12,7 +12,7 @@ import javafx.scene.control.CheckBox;
  * classe permet de gérer des expériences 
  * @author Khadra ABDI JIBRIL
  */
-public class EXPERIENCE {
+public class Experience {
   private String idExperience; 
   private String typeExperience;
   private String soumisPar;
@@ -32,7 +32,7 @@ public class EXPERIENCE {
  * @param dateTransmission
  */
   
-   public EXPERIENCE(String idExperience, String typeExperience, String soumisPar, String urgent, String dateSoumission,  String dateTransmission) {
+   public Experience(String idExperience, String typeExperience, String soumisPar, String urgent, String dateSoumission,  String dateTransmission) {
         this.idExperience = idExperience;
         this.typeExperience = typeExperience;
         this.soumisPar = soumisPar;
