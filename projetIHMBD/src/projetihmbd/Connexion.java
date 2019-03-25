@@ -104,6 +104,7 @@ public class Connexion extends Parent {
             else{
                 validationText.setText("Erreur connexion");
             }
+            this.getChildren().clear();
         });
         
         this.getChildren().add(gridpane); 
@@ -111,7 +112,7 @@ public class Connexion extends Parent {
     }
     
     /**
-     * Méthode pour connecté un utilisateur et retourner le type d'utilisateur connecte.
+     * Méthode pour connecter un utilisateur et retourner le type d'utilisateur connecte.
      * @param nomUtilisateur
      * @param mdp
      * @param typeUtilisateur
