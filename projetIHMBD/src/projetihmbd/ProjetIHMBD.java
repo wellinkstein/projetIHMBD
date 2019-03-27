@@ -41,25 +41,10 @@ public class ProjetIHMBD extends Application {
 
         //creation des toolbar
         ToolBar toolBar = new ToolBar(); // toolbar par défaut
-        ToolBar toolBarLab = new ToolBar(); // toolbar laborantin
-        ToolBar toolBarChe = new ToolBar(); // toolbar chercheur
         
         // création de 2 vBox différentes
         
-        VBox vBox = new VBox();
-        
-        String typeU = typeUtilisateurConnecte(utilisateurs);
-        switch (typeU) {
-            case "Laborantin":
-                vBox = new VBox (toolBarLab);
-                break;
-            case "Chercheur":
-                vBox = new VBox(toolBarChe);
-                break;
-            default:
-                vBox = new VBox(toolBar);
-                break;
-        }
+        VBox vBox = new VBox(toolBar);
 
         VBox vBox2 = new VBox(root);
         
@@ -75,12 +60,12 @@ public class ProjetIHMBD extends Application {
         
         //  création du bouton Gestion des expériences et ajout à la toolbar
         Button buttonGestionExp= new Button("Gestion des expériences");
-        toolBarChe.getItems().add(buttonGestionExp);
+        toolBar.getItems().add(buttonGestionExp);
         
         // création du bouton tableau de bord et ajout à la toolbar
         
         Button buttonTableauBord = new Button ("Tableau de bord");
-        toolBarLab.getItems().add(buttonTableauBord);
+        toolBar.getItems().add(buttonTableauBord);
         
         //  création du bouton exit et ajout à la toolbar
         
@@ -93,10 +78,6 @@ public class ProjetIHMBD extends Application {
         Button buttonExit = new Button("X");
         toolBar.getItems().add(rightSpacer);
         toolBar.getItems().add(buttonExit);
-        toolBarLab.getItems().add(rightSpacer);
-        toolBarLab.getItems().add(buttonExit);
-        toolBarChe.getItems().add(rightSpacer);
-        toolBarChe.getItems().add(buttonExit);
         
         Connexion connexion = new Connexion(utilisateurs);
         
