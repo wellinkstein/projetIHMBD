@@ -31,7 +31,7 @@ public class TableauBordLab extends Parent {
     private final TableView<Experience> tableBord = new TableView<>();
     private final ObservableList<Experience> data =
                 FXCollections.observableArrayList(
-                    new Experience("1", "Colorimétrique", "Chercheur", "Non", "27-03-2019", ""));
+                    new Experience("1", "Colorimétrique", "Chercheur", "Non", "27-03-2019", "", "", "",""));
     
     public TableauBordLab (){
         
