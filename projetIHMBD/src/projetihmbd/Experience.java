@@ -7,11 +7,11 @@ package projetihmbd;
 
 import javafx.scene.control.CheckBox;
 
-
 /**
  * classe permet de gérer des expériences 
  * @author Khadra ABDI JIBRIL
  */
+
 public class Experience {
   private String idExperience; 
   private String typeExperience;
@@ -19,6 +19,9 @@ public class Experience {
   private String urgent; 
   private String dateSoumission;
   private String dateTransmission; 
+  private String dateDebut; 
+  private String dateFin;
+  private String validation; 
   private CheckBox checkbox1 = new CheckBox(); //bouton de sélection danns la table da charcheur 
   private CheckBox checkbox2 = new CheckBox(); //button de sélection dans la table de labortin 
   /** 
@@ -30,15 +33,21 @@ public class Experience {
  * @param urgent
  * @param dateSoumission
  * @param dateTransmission
+ * @param dateDebut
+ * @param dateFin
+ * @param validation
  */
   
-   public Experience(String idExperience, String typeExperience, String soumisPar, String urgent, String dateSoumission,  String dateTransmission) {
+   public Experience(String idExperience, String typeExperience, String soumisPar, String urgent, String dateSoumission,  String dateTransmission,  String dateDebut, String dateFin, String validation) {
         this.idExperience = idExperience;
         this.typeExperience = typeExperience;
         this.soumisPar = soumisPar;
         this.urgent = urgent; 
         this.dateSoumission = dateSoumission; 
-        this.dateTransmission = dateTransmission; 
+        this.dateTransmission = dateTransmission;
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
+        this.validation = validation; 
     }
    /**
      * Getter pour l'attribut idExperience d'un expérience.
@@ -89,7 +98,25 @@ public class Experience {
     public String getdateTransmission() {
         return dateTransmission;
     }
+     public String getdateDebut() {
+        return dateDebut;
+    }
+    /**
+     * Getter pour date de début d'un expérience.
+     * @return 
+     */
     
+    public String getdateFin() {
+        return dateFin;
+    }
+     /**
+     * Getter pour validation d'un expérience.
+     * @return 
+     */
+    
+    public String getvalidation() {
+        return validation;
+    }
      /**
      * Setter pour l'id d'expérience d'un expérience.
      * @param idExperience
@@ -139,6 +166,31 @@ public class Experience {
     
     public void setdateTransmission (String dateTransmission){
         this.dateTransmission = dateTransmission;
+    }
+      /**
+     * Setter pour la date de début d'un expérience.
+     * @param dateDebut
+     */
+    
+    public void setdateDebut (String dateDebut){
+        this.dateDebut = dateDebut;
+    }
+    /**
+     * Setter pour la date de fin d'un expérience.
+     * @param dateFin
+     */
+    
+    public void setdateFin (String dateFin){
+        this.dateFin = dateFin;
+    }
+    /**
+     * Setter pour la validation d'un expérience.
+     * @param validation
+     */
+    
+    public void setvalidation(String validation){
+        this.validation = validation;
+    
     }
      /**
      * Getter pour déterminer si le statut de la checkbox dans la 
