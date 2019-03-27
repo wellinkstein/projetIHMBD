@@ -132,7 +132,7 @@ public class TableGestionExp extends Parent {
         addDateTransmission.setPromptText("date de transmission");
 
         // le button d'ajout 
-        final Button addButton = new Button("Add");
+        final Button addButton = new Button("Ajouter");
         addButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
