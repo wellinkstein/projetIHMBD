@@ -7,7 +7,6 @@ package  projetihmbd;
 
 
 
-import javafx.application.Application;
 import static javafx.application.Application.launch;
 
 import javafx.beans.property.SimpleStringProperty;
@@ -19,6 +18,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -28,12 +28,13 @@ import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import projetihmbd.TableLabo.Experience;
+import projetihmbd.TableGestionExp.Experience;
 
 
 
@@ -45,7 +46,7 @@ import projetihmbd.TableLabo.Experience;
 
 
  
-public class TableLabo extends Application {
+public class TableGestionExp extends Parent {
 
  
     private TableView<Experience> table = new TableView<Experience>();
@@ -53,18 +54,9 @@ public class TableLabo extends Application {
             FXCollections.observableArrayList(
             new Experience("01-02-2019", "25-02-2019", "27-02-2019"));
     final HBox hb = new HBox();
- 
-    public static void main(String[] args) {
-        launch(args);
-    }
-
   
  
-    public void start(Stage stage) {
-        Scene scene = new Scene(new Group());
-        stage.setTitle("Table laboratin");
-        stage.setWidth(450);
-        stage.setHeight(550);
+    public TableGestionExp() {
  
         final Label label = new Label("Gestion des expériences");
         label.setFont(new Font("Arial", 20));
@@ -161,11 +153,14 @@ public class TableLabo extends Application {
         vbox.setSpacing(5);
         vbox.setPadding(new Insets(10, 0, 0, 10));
         vbox.getChildren().addAll(label, table, hb);
+        
+        BorderPane main = new BorderPane();
+        main.setPadding(new Insets(20));
+        main.setCenter(vbox);        
+        
+        this.getChildren().add(main);
  
-        ((Group) scene.getRoot()).getChildren().addAll(vbox);
- 
-        stage.setScene(scene);
-        stage.show();
+        
     }
     
  // classe experience pour gérer les information 

@@ -80,6 +80,22 @@ public class ProjetIHMBD extends Application {
         toolBar.getItems().add(buttonExit);
         
         Connexion connexion = new Connexion(utilisateurs);
+        TableauBordLab tableauBordLab = new TableauBordLab();
+        TableGestionExp tableGestionExp = new TableGestionExp();
+        
+        // évenement pour le bouton gestion des expériences
+        buttonGestionExp.setOnAction(h -> {
+            root.getChildren().clear();
+            root.getChildren().add(tableGestionExp);
+        });
+        
+        
+        //évenement pour le bouton Tableau de bord des laborantins
+        
+        buttonTableauBord.setOnAction(h -> {
+           root.getChildren().clear();
+           root.getChildren().add(tableauBordLab);
+        });
         
         //évenement souris pour le bouton exit      
         buttonExit.setOnAction(h -> {            
