@@ -22,7 +22,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 /**
- *
+ * Tableau de bord du laborantin
  * @author Jérémie
  */
 public class TableauBordLab extends Parent {
@@ -33,8 +33,6 @@ public class TableauBordLab extends Parent {
                 FXCollections.observableArrayList();
     
     public TableauBordLab (ListeExperiences listeExperiences){
-        
-        listeExperiences.addExperience("1","1","1","1","1","1","1","1","1");
         
         updateTable(listeExperiences);
         
@@ -111,9 +109,8 @@ public class TableauBordLab extends Parent {
     
     public void updateTable(ListeExperiences listeExperiences){
         for (int i=0 ; i<listeExperiences.getSizeListExp() ; i++){
-            Experience exp = new Experience(listeExperiences.getExp(i).getidExperience(), listeExperiences.getExp(i).gettypeExperience(), listeExperiences.getExp(i).geturgent(), listeExperiences.getExp(i).getdate_soumission(), listeExperiences.getExp(i).getdateDebut(), "", "", "","");
             
-            data.add(exp);
+            data.add(listeExperiences.getExp(i));
         }
     }
     

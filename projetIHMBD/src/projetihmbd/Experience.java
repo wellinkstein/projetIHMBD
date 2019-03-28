@@ -9,7 +9,7 @@ import javafx.scene.control.CheckBox;
 
 /**
  * classe permet de gérer des expériences 
- * @author Khadra ABDI JIBRIL
+ * @author Jérémie, Khadra ABDI JIBRIL
  */
 
 public class Experience {
@@ -49,183 +49,203 @@ public class Experience {
         this.dateFin = dateFin;
         this.validation = validation; 
     }
+   
    /**
-     * Getter pour l'attribut idExperience d'un expérience.
-     * @return 
-     */
-    
-    public String getidExperience() {
+    * Getter pour idExperience
+    * @return 
+    */
+
+    public String getIdExperience() {
         return idExperience;
     }
-  /**
-     * Getter pour l'attribut typeExperience d'un expérience.
+    
+    /**
+     * Setter pour idExperience
+     * @param idExperience 
+     */
+
+    public void setIdExperience(String idExperience) {
+        this.idExperience = idExperience;
+    }
+    
+    /**
+     * Getter pour typeExperience
      * @return 
      */
-    
-    public String gettypeExperience() {
+
+    public String getTypeExperience() {
         return typeExperience;
     }
+
     /**
-     * Getter pour l'attribut soumis_par d'un expérience.
-     * @return 
+     * Setter pour typeExperience
+     * @param typeExperience 
      */
     
-    public String getsoumisPar() {
-        return soumisPar;
-    }
-  
-   /**
-     * Getter pour l'attribut urgent d'un expérience.
-     * @return 
-     */
-    
-    public String geturgent() {
-        return urgent;
-    }
-    /**
-     * Getter pour l'attribut date_soumission d'un expérience.
-     * @return 
-     */
-    
-    public String getdate_soumission() {
-        return dateSoumission;
-    }
-    /**
-     * Getter pour date_transmission d'un expérience.
-     * @return 
-     */
-    
-    public String getdateTransmission() {
-        return dateTransmission;
-    }
-     public String getdateDebut() {
-        return dateDebut;
-    }
-    /**
-     * Getter pour date de début d'un expérience.
-     * @return 
-     */
-    
-    public String getdateFin() {
-        return dateFin;
-    }
-     /**
-     * Getter pour validation d'un expérience.
-     * @return 
-     */
-    
-    public String getvalidation() {
-        return validation;
-    }
-     /**
-     * Setter pour l'id d'expérience d'un expérience.
-     * @param idExperience
-     */
-    
-    public void setidExperience (String idExperience){
-        this.idExperience = idExperience; 
-    }
-        
-  
-     /**
-     * Setter pour le type d'expérience d'un expérience.
-     * @param typeExperience
-     */
-    
-    public void settypeExperience (String typeExperience){
+    public void setTypeExperience(String typeExperience) {
         this.typeExperience = typeExperience;
     }
+
     /**
-     * Setter pour la soumission d'un expérience.
-     * @param soumisPar
-     */
-    
-    public void setsoumisPar (String soumisPar){
-        this.soumisPar = soumisPar;
-    }
-    /**
-     * Setter pour l'urgence d'un expérience.
-     * @param urgent
-     */
-    
-    public void seturgnet (String urgent){
-        this.urgent = urgent;
-    }
-    /**
-     * Setter pour la date de soumsission d'un expérience.
-     * @param dateSoumission
-     */
-    
-    public void setdateSoumission (String dateSoumission){
-        this.dateSoumission= dateSoumission;
-    }
-    /**
-     * Setter pour la date de transmission d'un expérience.
-     * @param dateTransmission
-     */
-    
-    public void setdateTransmission (String dateTransmission){
-        this.dateTransmission = dateTransmission;
-    }
-      /**
-     * Setter pour la date de début d'un expérience.
-     * @param dateDebut
-     */
-    
-    public void setdateDebut (String dateDebut){
-        this.dateDebut = dateDebut;
-    }
-    /**
-     * Setter pour la date de fin d'un expérience.
-     * @param dateFin
-     */
-    
-    public void setdateFin (String dateFin){
-        this.dateFin = dateFin;
-    }
-    /**
-     * Setter pour la validation d'un expérience.
-     * @param validation
-     */
-    
-    public void setvalidation(String validation){
-        this.validation = validation;
-    
-    }
-     /**
-     * Getter pour déterminer si le statut de la checkbox dans la 
-     * tableview de tableau de bord de chercheur = 1 
+     * Getter pour soumisPar
      * @return 
      */
     
+    public String getSoumisPar() {
+        return soumisPar;
+    }
+    
+    /**
+     * Setter pour soumisPar
+     * @param soumisPar 
+     */
+
+    public void setSoumisPar(String soumisPar) {
+        this.soumisPar = soumisPar;
+    }
+
+    /**
+     * Getter pour urgent
+     * @return 
+     */
+    
+    public String getUrgent() {
+        return urgent;
+    }
+
+    /**
+     * Setter pour urgent
+     * @param urgent 
+     */
+    
+    public void setUrgent(String urgent) {
+        this.urgent = urgent;
+    }
+    
+    /**
+     * Getter pour dateSoumission
+     * @return 
+     */
+
+    public String getDateSoumission() {
+        return dateSoumission;
+    }
+    
+    /**
+     * Setter pour dateSoumission
+     * @param dateSoumission 
+     */
+
+    public void setDateSoumission(String dateSoumission) {
+        this.dateSoumission = dateSoumission;
+    }
+    
+    /**
+     * Getter pour dateTransmission
+     * @return 
+     */
+
+    public String getDateTransmission() {
+        return dateTransmission;
+    }
+    
+    /**
+     * Setter pour dateTransmission
+     * @param dateTransmission 
+     */
+
+    public void setDateTransmission(String dateTransmission) {
+        this.dateTransmission = dateTransmission;
+    }
+    
+    /**
+     * Getter pour dateDebut
+     * @return 
+     */
+
+    public String getDateDebut() {
+        return dateDebut;
+    }
+    
+    /**
+     * Setter pour dateDebut
+     * @param dateDebut 
+     */
+
+    public void setDateDebut(String dateDebut) {
+        this.dateDebut = dateDebut;
+    }
+    
+    /**
+     * Getter pour dateFin
+     * @return 
+     */
+
+    public String getDateFin() {
+        return dateFin;
+    }
+    
+    /**
+     * Setter pour dateFin
+     * @param dateFin 
+     */
+
+    public void setDateFin(String dateFin) {
+        this.dateFin = dateFin;
+    }
+    
+    /**
+     * Getter pour validation
+     * @return 
+     */
+
+    public String getValidation() {
+        return validation;
+    }
+    
+    /**
+     * Setter pour validation
+     * @param validation 
+     */
+
+    public void setValidation(String validation) {
+        this.validation = validation;
+    }
+    
+    /**
+     * Setter pour validation
+     * @return 
+     */
+
     public CheckBox getCheckbox1() {
         return checkbox1;
     }
     
     /**
-     * Setter pour la checkbox de l'expérience.
+     * Getter pour la checkbox1
      * @param checkbox1 
      */
- 
-    public void setCheckBox1(CheckBox checkbox1) {
+
+    public void setCheckbox1(CheckBox checkbox1) {
         this.checkbox1 = checkbox1;
     }
+    
     /**
-     * Getter pour déterminer si le statut de la checkbox dans la 
-     * tableview de tableau de bord de laboratin= 2 
+     * Getter pour checkbox2
      * @return 
      */
-    
+
     public CheckBox getCheckbox2() {
         return checkbox2;
     }
     
     /**
-     * Setter pour la checkbox de l'expérience.
+     * Setter pour checkbox2
      * @param checkbox2 
      */
- 
-    public void setCheckBox2(CheckBox checkbox2) {
+
+    public void setCheckbox2(CheckBox checkbox2) {
         this.checkbox2 = checkbox2;
     }
+   
 }
