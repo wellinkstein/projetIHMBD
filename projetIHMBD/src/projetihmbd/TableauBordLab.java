@@ -111,7 +111,9 @@ public class TableauBordLab extends Parent {
     
     public void updateTable(ListeExperiences listeExperiences){
         for (int i=0 ; i<listeExperiences.getSizeListExp() ; i++){
-            data.add(listeExperiences.getExp(i));
+            Experience exp = new Experience(listeExperiences.getExp(i).getidExperience(), listeExperiences.getExp(i).gettypeExperience(), listeExperiences.getExp(i).geturgent(), listeExperiences.getExp(i).getdate_soumission(), listeExperiences.getExp(i).getdateDebut(), "", "", "","");
+            
+            data.add(exp);
         }
     }
     

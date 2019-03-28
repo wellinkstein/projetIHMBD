@@ -39,7 +39,7 @@ public class TableGestionExp extends Parent {
     
     public TableGestionExp (){
         
-        tableBord.setPrefSize( 600, 300 );
+        //tableBord.setPrefSize( 600, 300 );
         
         final Label label = new Label("Expériences");
         label.setFont(new Font("Arial", 20));
@@ -69,23 +69,38 @@ public class TableGestionExp extends Parent {
         tExpCol.setCellValueFactory(
                 new PropertyValueFactory<Experience, String>("typeExperience"));
         
-        TableColumn UrgCol = new TableColumn("Urgent");
-        UrgCol.setMinWidth(100);
-        UrgCol.setCellValueFactory(
-                new PropertyValueFactory<Experience, String>("urgent"));
-        
         TableColumn dateSouCol = new TableColumn("Soumission");
         dateSouCol.setMinWidth(100);
         dateSouCol.setCellValueFactory(
                 new PropertyValueFactory<Experience, String>("dateSoumission"));
         
+        TableColumn dateTransCol = new TableColumn("Transmission");
+        dateTransCol.setMinWidth(100);
+        dateTransCol.setCellValueFactory(
+                new PropertyValueFactory<Experience, String>("dateTransmission"));
+        
         TableColumn dateDebutCol = new TableColumn("Début");
         dateDebutCol.setMinWidth(100);
         dateDebutCol.setCellValueFactory(
         new PropertyValueFactory<Experience, String>("dateDebut"));
+        
+        TableColumn labCol = new TableColumn("Laborantin");
+        labCol.setMinWidth(100);
+        labCol.setCellValueFactory(
+        new PropertyValueFactory<Experience, String>("laborantin"));
+        
+        TableColumn urgCol = new TableColumn("Urgent");
+        urgCol.setMinWidth(100);
+        urgCol.setCellValueFactory(
+        new PropertyValueFactory<Experience, String>("urgent"));
+        
+        TableColumn valCol = new TableColumn("Validée");
+        valCol.setMinWidth(100);
+        valCol.setCellValueFactory(
+        new PropertyValueFactory<Experience, String>("validee"));
 
         tableBord.setItems(data);
-        tableBord.getColumns().addAll(selectCol, IdCol, tExpCol, UrgCol, dateSouCol, dateDebutCol);
+        tableBord.getColumns().addAll(selectCol, IdCol, tExpCol, dateSouCol, dateTransCol, dateDebutCol, labCol, urgCol, valCol);
         
         Button buttonAjouter = new Button ("Ajouter");
         Button buttonEtditer = new Button ("Editer");
