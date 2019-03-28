@@ -54,10 +54,10 @@ public class TableGestionExp extends Parent {
         textTitre.setFill(javafx.scene.paint.Color.BLACK);
         textTitre.setStrokeWidth(2);
         
-                TableColumn selectCol = new TableColumn("[]");
-        selectCol.setMinWidth(50);
+                TableColumn selectCol = new TableColumn("Sélectionner");
+        selectCol.setMinWidth(75);
         selectCol.setCellValueFactory(
-                new PropertyValueFactory<Experience, String>("checkbox2"));
+                new PropertyValueFactory<Experience, String>("checkbox1"));
         
                 TableColumn IdCol = new TableColumn("ID");
         IdCol.setMinWidth(100);
@@ -69,38 +69,52 @@ public class TableGestionExp extends Parent {
         tExpCol.setCellValueFactory(
                 new PropertyValueFactory<Experience, String>("typeExperience"));
         
+                TableColumn soumParCol = new TableColumn("Soumis par");
+        soumParCol.setMinWidth(100);
+        soumParCol.setCellValueFactory(
+        new PropertyValueFactory<Experience, String>("soumisPar"));
+        soumParCol.setVisible(false);
+        
+        TableColumn urgCol = new TableColumn("Urgent");
+        urgCol.setMinWidth(100);
+        urgCol.setCellValueFactory(
+                new PropertyValueFactory<Experience, String>("urgent"));
+        
         TableColumn dateSouCol = new TableColumn("Soumission");
         dateSouCol.setMinWidth(100);
         dateSouCol.setCellValueFactory(
                 new PropertyValueFactory<Experience, String>("dateSoumission"));
-        
-        TableColumn dateTransCol = new TableColumn("Transmission");
-        dateTransCol.setMinWidth(100);
-        dateTransCol.setCellValueFactory(
-                new PropertyValueFactory<Experience, String>("dateTransmission"));
         
         TableColumn dateDebutCol = new TableColumn("Début");
         dateDebutCol.setMinWidth(100);
         dateDebutCol.setCellValueFactory(
         new PropertyValueFactory<Experience, String>("dateDebut"));
         
-        TableColumn labCol = new TableColumn("Laborantin");
-        labCol.setMinWidth(100);
-        labCol.setCellValueFactory(
-        new PropertyValueFactory<Experience, String>("laborantin"));
+        TableColumn dateFinCol = new TableColumn("Fin");
+        dateFinCol.setMinWidth(100);
+        dateFinCol.setCellValueFactory(
+        new PropertyValueFactory<Experience, String>("dateFin"));
+        dateFinCol.setVisible(false);
         
-        TableColumn urgCol = new TableColumn("Urgent");
-        urgCol.setMinWidth(100);
-        urgCol.setCellValueFactory(
-        new PropertyValueFactory<Experience, String>("urgent"));
+        TableColumn dateTransCol = new TableColumn("Transmission");
+        dateTransCol.setMinWidth(100);
+        dateTransCol.setCellValueFactory(
+        new PropertyValueFactory<Experience, String>("dateTransmission"));
+        dateTransCol.setVisible(false);
         
-        TableColumn valCol = new TableColumn("Validée");
-        valCol.setMinWidth(100);
-        valCol.setCellValueFactory(
-        new PropertyValueFactory<Experience, String>("validee"));
-
+        TableColumn dateValCol = new TableColumn("Validée");
+        dateValCol.setMinWidth(100);
+        dateValCol.setCellValueFactory(
+        new PropertyValueFactory<Experience, String>("validation"));
+        
+        TableColumn checkbox2Col = new TableColumn("Checkbox");
+        checkbox2Col.setMinWidth(100);
+        checkbox2Col.setCellValueFactory(
+        new PropertyValueFactory<Experience, String>("checkbox2"));
+        checkbox2Col.setVisible(false);
+        
         tableBord.setItems(data);
-        tableBord.getColumns().addAll(selectCol, IdCol, tExpCol, dateSouCol, dateTransCol, dateDebutCol, labCol, urgCol, valCol);
+        tableBord.getColumns().addAll(selectCol, IdCol, tExpCol, soumParCol, urgCol, dateSouCol, dateDebutCol, dateFinCol, dateTransCol, dateValCol, checkbox2Col);
         
         Button buttonAjouter = new Button ("Ajouter");
         Button buttonEtditer = new Button ("Editer");

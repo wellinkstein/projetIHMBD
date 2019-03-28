@@ -52,13 +52,13 @@ public class TableauBordLab extends Parent {
         textTitre.setFill(javafx.scene.paint.Color.BLACK);
         textTitre.setStrokeWidth(2);
         
-                TableColumn selectCol = new TableColumn("[]");
-        selectCol.setMinWidth(50);
+                TableColumn selectCol = new TableColumn("Sélectionner");
+        selectCol.setMinWidth(75);
         selectCol.setCellValueFactory(
                 new PropertyValueFactory<Experience, String>("checkbox2"));
         
                 TableColumn IdCol = new TableColumn("ID");
-        IdCol.setMinWidth(100);
+        IdCol.setMinWidth(50);
         IdCol.setCellValueFactory(
             new PropertyValueFactory<Experience, String>("idExperience"));
        
@@ -67,9 +67,15 @@ public class TableauBordLab extends Parent {
         tExpCol.setCellValueFactory(
                 new PropertyValueFactory<Experience, String>("typeExperience"));
         
-        TableColumn UrgCol = new TableColumn("Urgent");
-        UrgCol.setMinWidth(100);
-        UrgCol.setCellValueFactory(
+        TableColumn soumParCol = new TableColumn("Soumis par");
+        soumParCol.setMinWidth(100);
+        soumParCol.setCellValueFactory(
+        new PropertyValueFactory<Experience, String>("soumisPar"));
+        soumParCol.setVisible(false);
+        
+        TableColumn urgCol = new TableColumn("Urgent");
+        urgCol.setMinWidth(100);
+        urgCol.setCellValueFactory(
                 new PropertyValueFactory<Experience, String>("urgent"));
         
         TableColumn dateSouCol = new TableColumn("Soumission");
@@ -81,9 +87,27 @@ public class TableauBordLab extends Parent {
         dateDebutCol.setMinWidth(100);
         dateDebutCol.setCellValueFactory(
         new PropertyValueFactory<Experience, String>("dateDebut"));
+        
+        TableColumn dateFinCol = new TableColumn("Fin");
+        dateFinCol.setMinWidth(100);
+        dateFinCol.setCellValueFactory(
+        new PropertyValueFactory<Experience, String>("dateFin"));
+        dateFinCol.setVisible(false);
+        
+        TableColumn dateTransCol = new TableColumn("Transmission");
+        dateTransCol.setMinWidth(100);
+        dateTransCol.setCellValueFactory(
+        new PropertyValueFactory<Experience, String>("dateTransmission"));
+        dateTransCol.setVisible(false);
+        
+        TableColumn dateValCol = new TableColumn("Validée");
+        dateValCol.setMinWidth(100);
+        dateValCol.setCellValueFactory(
+        new PropertyValueFactory<Experience, String>("validation"));
+        dateValCol.setVisible(false);
 
         tableBord.setItems(data);
-        tableBord.getColumns().addAll(selectCol, IdCol, tExpCol, UrgCol, dateSouCol, dateDebutCol);
+        tableBord.getColumns().addAll(selectCol, IdCol, tExpCol, soumParCol, urgCol, dateSouCol, dateDebutCol, dateFinCol, dateTransCol, dateValCol);
         
         Button buttonValid = new Button ("Valider");
         Button buttonEtditer = new Button ("Editer");

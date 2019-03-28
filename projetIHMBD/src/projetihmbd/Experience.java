@@ -13,16 +13,16 @@ import javafx.scene.control.CheckBox;
  */
 
 public class Experience {
+  private CheckBox checkbox1 = new CheckBox(); //bouton de sélection danns la table da charcheur 
   private String idExperience; 
   private String typeExperience;
   private String soumisPar;
   private String urgent; 
   private String dateSoumission;
-  private String dateTransmission; 
   private String dateDebut; 
   private String dateFin;
-  private String validation; 
-  private CheckBox checkbox1 = new CheckBox(); //bouton de sélection danns la table da charcheur 
+  private String dateTransmission; 
+  private String validation;   
   private CheckBox checkbox2 = new CheckBox(); //button de sélection dans la table de labortin 
   /** 
  * Constructeur de la classe étudiant.
