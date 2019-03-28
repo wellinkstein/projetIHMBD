@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package projetihmbd;
 
 /**
@@ -18,7 +13,7 @@ public class Utilisateur {
     private Boolean estConnecte = false;
     
     /**
-     * Constructeur pour la classe utilisateeur.
+     * Constructeur pour la classe utilisateur.
      * @param nomUtilisateur
      * @param mdp
      * @param typeUtilisateur
@@ -52,7 +47,7 @@ public class Utilisateur {
      * Getter pour le mot de passe
      * @return 
      */
-    public String getMDP(){
+    public String getMdp(){
         return mdp;
     }
     
@@ -84,7 +79,7 @@ public class Utilisateur {
      * Setter pour le mot de passe
      * @param mdp 
      */
-    public void setMDP(String mdp){
+    public void setMdp(String mdp){
         this.mdp = mdp;
     }
     

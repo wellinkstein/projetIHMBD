@@ -8,12 +8,12 @@ package projetihmbd;
 import javafx.scene.control.CheckBox;
 
 /**
- * classe permet de gérer des expériences 
+ * Classe permettant de gérer des expériences 
  * @author Jérémie, Khadra ABDI JIBRIL
  */
 
 public class Experience {
-  private CheckBox checkbox1 = new CheckBox(); //bouton de sélection danns la table da charcheur 
+  private CheckBox checkbox1 = new CheckBox(); //bouton de sélection danns la table de chercheur 
   private String idExperience; 
   private String typeExperience;
   private String soumisPar;
@@ -23,8 +23,9 @@ public class Experience {
   private String dateFin;
   private String dateTransmission; 
   private String validation;   
-  private CheckBox checkbox2 = new CheckBox(); //button de sélection dans la table de labortin 
-  /** 
+  private CheckBox checkbox2 = new CheckBox(); //button de sélection dans la table de laborantin 
+  
+ /** 
  * Constructeur de la classe étudiant.
  * Prend en paramètre les valeurs des attributs d'un étudiant.
  * @param idExperience 

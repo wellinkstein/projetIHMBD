@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package projetihmbd;
 
 import javafx.collections.FXCollections;
@@ -30,16 +25,16 @@ public class TableGestionExp extends Parent {
     
     private final TableView<Experience> tableBord = new TableView<>();
     private final ObservableList<Experience> data =
-                FXCollections.observableArrayList(
-                    new Experience("1", "Colorimétrique", "Chercheur", "Non", "27-03-2019", "", "", "",""));
+                FXCollections.observableArrayList();
     
     /**
-     * Constructeur de la classe
+     * Constructeur de la classe TableGestionExp
+     * @param listeExperiences
      */
     
-    public TableGestionExp (){
+    public TableGestionExp (ListeExperiences listeExperiences){
         
-        //tableBord.setPrefSize( 600, 300 );
+        updateTable(listeExperiences);
         
         final Label label = new Label("Expériences");
         label.setFont(new Font("Arial", 20));
@@ -53,6 +48,8 @@ public class TableGestionExp extends Parent {
         textTitre.setY(220);   
         textTitre.setFill(javafx.scene.paint.Color.BLACK);
         textTitre.setStrokeWidth(2);
+        
+        //Création des colonnes
         
                 TableColumn selectCol = new TableColumn("Sélectionner");
         selectCol.setMinWidth(75);
@@ -113,6 +110,8 @@ public class TableGestionExp extends Parent {
         new PropertyValueFactory<Experience, String>("checkbox2"));
         checkbox2Col.setVisible(false);
         
+        // ajout des données et colonnes au tableau de bord
+        
         tableBord.setItems(data);
         tableBord.getColumns().addAll(selectCol, IdCol, tExpCol, soumParCol, urgCol, dateSouCol, dateDebutCol, dateFinCol, dateTransCol, dateValCol, checkbox2Col);
         
@@ -136,6 +135,13 @@ public class TableGestionExp extends Parent {
         this.getChildren().add(main);
         
         
+    }
+    
+        public void updateTable(ListeExperiences listeExperiences){
+        for (int i=0 ; i<listeExperiences.getSizeListExp() ; i++){
+            
+            data.add(listeExperiences.getExp(i));
+        }
     }
     
 }

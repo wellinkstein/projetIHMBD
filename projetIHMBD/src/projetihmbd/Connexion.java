@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package projetihmbd;
 
 import java.util.ArrayList;
@@ -11,7 +6,6 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
@@ -27,12 +21,13 @@ import javafx.scene.text.Text;
 public class Connexion extends Parent {
     
     Button buttonValider = new Button("Valider");
-    TextField userField = new TextField();
-    TextField mdpField = new TextField();
+    TextField userField = new TextField("U1 pour lab ou U2 pour chercheur");
+    TextField mdpField = new TextField("111 pour lab ou 222 pour chercheur");
 
     
     /**
-     * Constructeur pour la classe connexion
+     * Constructeur pour la connexion.
+     * @param listeUtilisateurs 
      */
     
     public Connexion(ArrayList<Utilisateur> listeUtilisateurs){
@@ -75,7 +70,6 @@ public class Connexion extends Parent {
         gridpane.setVgap(10);
         gridpane.setHgap(10);
         gridpane.setPadding(new Insets(50));
-        //gridpane.setGridLinesVisible(true);
     
         //alignement des champs du gridpane
         GridPane.setHalignment(textTitre, HPos.CENTER);
@@ -85,8 +79,6 @@ public class Connexion extends Parent {
     
         GridPane.setHalignment(mdpText, HPos.RIGHT);
         GridPane.setHalignment(mdpField, HPos.LEFT);
-        
-        
         
         this.getChildren().add(gridpane); 
         
@@ -102,7 +94,7 @@ public class Connexion extends Parent {
     
     public String connexionUtilisateur(String nomUtilisateur, String mdp, ArrayList<Utilisateur> listeUtilisateurs){
         for (Utilisateur u : listeUtilisateurs) {
-            if (u.getNomUtilisateur().equals(nomUtilisateur) & u.getMDP().equals(mdp)){
+            if (u.getNomUtilisateur().equals(nomUtilisateur) & u.getMdp().equals(mdp)){
                 u.setEstConnecte(true);
                 return u.getTypeUtilisateur();
             }
@@ -125,7 +117,21 @@ public class Connexion extends Parent {
     public TextField getMdpField() {
         return mdpField;
     }
+
+    public void setUserField(TextField userField) {
+        this.userField = userField;
+    }
+
+    public void setMdpField(TextField mdpField) {
+        this.mdpField = mdpField;
+    }
     
+    public void setUserFieldVal(String userField){
+        this.userField.setText(userField);
+    }
     
+    public void setMdpFieldVal(String mdpField){
+        this.mdpField.setText(mdpField);
+    }
     
 }

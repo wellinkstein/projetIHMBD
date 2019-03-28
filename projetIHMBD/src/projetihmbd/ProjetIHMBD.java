@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package projetihmbd;
 
 import java.util.ArrayList;
@@ -32,25 +27,22 @@ public class ProjetIHMBD extends Application {
         
         Group root = new Group();
         
+        // création de la liste des expériences
+        
         ListeExperiences listeExperiences;
         listeExperiences = new ListeExperiences();
         listeExperiences.addExperience("1", "Colorimétrique", "Chercheur", "Non", "27-03-2019", "", "", "","");
         
-        //création d'une liste d'utilisateur
+        //création d'une liste d'utilisateurs
         ArrayList<Utilisateur> utilisateurs = new ArrayList<>();
         Utilisateur u1 = new Utilisateur ("U1", "111", "Laborantin");
         Utilisateur u2 = new Utilisateur ("U2", "222", "Chercheur");
         utilisateurs.add(u1);
         utilisateurs.add(u2);
 
-        //creation des toolbar
-        ToolBar toolBar = new ToolBar(); // toolbar par défaut
-
-        
-        // création de 2 vBox différentes
+        ToolBar toolBar = new ToolBar();
         
         VBox vBox = new VBox(toolBar);
-
         VBox vBox2 = new VBox(root);
         
         Scene scene = new Scene(vBox,600, 600);
@@ -59,20 +51,13 @@ public class ProjetIHMBD extends Application {
         primaryStage.setTitle("Gestion d'expériences de laboratoire");
         primaryStage.setScene(scene);
         
-         //  création du bouton Connexion et ajout à la toolbar
+         //  création des boutons
         Button buttonConnexion= new Button("Connexion");
-        toolBar.getItems().add(buttonConnexion);
-        
-        //  création du bouton Gestion des expériences et ajout à la toolbar
         Button buttonGestionExp= new Button("Gestion des expériences");
-        
-        // création du bouton tableau de bord et ajout à la toolbar
-        
         Button buttonTableauBord = new Button ("Tableau de bord");
-        
         Button buttonDeconnexion = new Button ("Déconnexion");
+        Button buttonExit = new Button("X");
         
-        //  création du bouton exit et ajout à la toolbar
         
         final Pane rightSpacer = new Pane(); 
         HBox.setHgrow(
@@ -80,13 +65,13 @@ public class ProjetIHMBD extends Application {
                 Priority.SOMETIMES
         );
         
-        Button buttonExit = new Button("X");
+        toolBar.getItems().add(buttonConnexion);
         toolBar.getItems().add(rightSpacer);
         toolBar.getItems().add(buttonExit);
         
         Connexion connexion = new Connexion(utilisateurs);
         TableauBordLab tableauBordLab = new TableauBordLab(listeExperiences);
-        TableGestionExp tableGestionExp = new TableGestionExp();
+        TableGestionExp tableGestionExp = new TableGestionExp(listeExperiences);
         
         // évenement pour le bouton gestion des expériences
         buttonGestionExp.setOnAction(h -> {
@@ -94,6 +79,21 @@ public class ProjetIHMBD extends Application {
             root.getChildren().add(tableGestionExp);
         });
         
+        buttonDeconnexion.setOnAction(h -> {
+            root.getChildren().clear();
+            toolBar.getItems().remove(buttonDeconnexion);
+            toolBar.getItems().remove(rightSpacer);
+            toolBar.getItems().remove(buttonExit);
+            toolBar.getItems().remove(buttonGestionExp);
+            toolBar.getItems().remove(buttonTableauBord);
+            toolBar.getItems().add(buttonConnexion);
+            toolBar.getItems().add(rightSpacer);
+            toolBar.getItems().add(buttonExit);
+            root.getChildren().add(connexion);
+            connexion.setUserFieldVal("U1 pour lab ou U2 pour chercheur");
+            connexion.setMdpFieldVal("111 pour lab ou 222 pour chercheur");
+
+        });
         
         //évenement pour le bouton Tableau de bord des laborantins
         
@@ -102,11 +102,13 @@ public class ProjetIHMBD extends Application {
            root.getChildren().add(tableauBordLab);
         });
         
-        //évenement souris pour le bouton exit      
+        //évenement pour le bouton exit      
         buttonExit.setOnAction(h -> {            
             primaryStage.close();
          
         });
+        
+        //évenement pour le bouton connexion
         
         buttonConnexion.setOnAction(h -> {
             root.getChildren().clear();
@@ -117,8 +119,13 @@ public class ProjetIHMBD extends Application {
         
         root.getChildren().add(connexion);
         
+        // Evénement pour le bouton valider de la fenêtre de connexion
+        
         connexion.getButtonValider().setOnAction(j -> {
               String co = connexion.connexionUtilisateur(connexion.getUserField().getText(), connexion.getMdpField().getText(), utilisateurs);
+              
+              // Affichage des items du panel en fonction du type d'utilisateur connecté
+              
               if (!co.equals("")){
                   if(co.equals("Laborantin")){
                         toolBar.getItems().remove(buttonConnexion);
@@ -128,6 +135,9 @@ public class ProjetIHMBD extends Application {
                         toolBar.getItems().add(buttonTableauBord);
                         toolBar.getItems().add(rightSpacer);
                         toolBar.getItems().add(buttonExit);
+                        root.getChildren().clear();
+                        root.getChildren().add(tableauBordLab);
+                        
                   }
                   else{
                         toolBar.getItems().remove(buttonConnexion);
@@ -137,7 +147,8 @@ public class ProjetIHMBD extends Application {
                         toolBar.getItems().add(buttonGestionExp);
                         toolBar.getItems().add(rightSpacer);
                         toolBar.getItems().add(buttonExit);
-                      
+                        root.getChildren().clear();
+                        root.getChildren().add(tableGestionExp);
                   }
                   
               }
@@ -151,33 +162,12 @@ public class ProjetIHMBD extends Application {
         primaryStage.show(); 
       
     }
+    
+    
 
     public static void main(String[] args) {
     launch(args);
     
-    }
-    
-    /**
-     * Méthode pour déterminer le type d'utilisateur connecté.
-     * @param listeUtilisateur
-     * @return 
-     */
-    public String typeUtilisateurConnecte(ArrayList<Utilisateur> listeUtilisateur) {
-        boolean uConnecte = false;
-        String typeUtilisateur ="";
-        for (Utilisateur u : listeUtilisateur){
-            if(u.getEstConnecte() == true){
-                uConnecte = true;
-                typeUtilisateur = u.getTypeUtilisateur();
-            }
-        }
-        
-        if (uConnecte){
-            return typeUtilisateur;
-        }
-        else{
-            return "";
-        }
     }
 
 }
