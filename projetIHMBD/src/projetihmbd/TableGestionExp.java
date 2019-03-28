@@ -131,6 +131,12 @@ public class TableGestionExp extends Parent {
         main.setCenter(vbox);
         main.setBottom(border);
         
+        buttonAjouter.setOnAction(j -> {
+            AjoutExperience ajoutExperience = new AjoutExperience(listeExperiences);
+            this.getChildren().clear();
+            this.getChildren().add(ajoutExperience);
+        });
+        
         
         this.getChildren().add(main);
         

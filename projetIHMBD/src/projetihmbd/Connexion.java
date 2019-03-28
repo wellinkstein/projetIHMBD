@@ -80,7 +80,7 @@ public class Connexion extends Parent {
         GridPane.setHalignment(mdpText, HPos.RIGHT);
         GridPane.setHalignment(mdpField, HPos.LEFT);
         
-        this.getChildren().add(gridpane); 
+        boolean add = this.getChildren().add(gridpane); 
         
     }
     
