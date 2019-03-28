@@ -45,6 +45,7 @@ public class ProjetIHMBD extends Application {
 
         //creation des toolbar
         ToolBar toolBar = new ToolBar(); // toolbar par défaut
+
         
         // création de 2 vBox différentes
         
@@ -64,12 +65,12 @@ public class ProjetIHMBD extends Application {
         
         //  création du bouton Gestion des expériences et ajout à la toolbar
         Button buttonGestionExp= new Button("Gestion des expériences");
-        toolBar.getItems().add(buttonGestionExp);
         
         // création du bouton tableau de bord et ajout à la toolbar
         
         Button buttonTableauBord = new Button ("Tableau de bord");
-        toolBar.getItems().add(buttonTableauBord);
+        
+        Button buttonDeconnexion = new Button ("Déconnexion");
         
         //  création du bouton exit et ajout à la toolbar
         
@@ -115,6 +116,37 @@ public class ProjetIHMBD extends Application {
         // Affichage de la connexion lors du démarrage de l'application
         
         root.getChildren().add(connexion);
+        
+        connexion.getButtonValider().setOnAction(j -> {
+              String co = connexion.connexionUtilisateur(connexion.getUserField().getText(), connexion.getMdpField().getText(), utilisateurs);
+              if (!co.equals("")){
+                  if(co.equals("Laborantin")){
+                        toolBar.getItems().remove(buttonConnexion);
+                        toolBar.getItems().remove(rightSpacer);
+                        toolBar.getItems().remove(buttonExit);
+                        toolBar.getItems().add(buttonDeconnexion);
+                        toolBar.getItems().add(buttonTableauBord);
+                        toolBar.getItems().add(rightSpacer);
+                        toolBar.getItems().add(buttonExit);
+                  }
+                  else{
+                        toolBar.getItems().remove(buttonConnexion);
+                        toolBar.getItems().remove(rightSpacer);
+                        toolBar.getItems().remove(buttonExit);
+                        toolBar.getItems().add(buttonDeconnexion);
+                        toolBar.getItems().add(buttonGestionExp);
+                        toolBar.getItems().add(rightSpacer);
+                        toolBar.getItems().add(buttonExit);
+                      
+                  }
+                  
+              }
+              else{
+                  
+              }
+              
+
+        });
         
         primaryStage.show(); 
       

@@ -26,6 +26,11 @@ import javafx.scene.text.Text;
  */
 public class Connexion extends Parent {
     
+    Button buttonValider = new Button("Valider");
+    TextField userField = new TextField();
+    TextField mdpField = new TextField();
+
+    
     /**
      * Constructeur pour la classe connexion
      */
@@ -46,18 +51,9 @@ public class Connexion extends Parent {
         
         Text userText = new Text("Nom utilisateur"); 
         Text mdpText = new Text("Mot de passe");
-        Text typeUserText = new Text("Type d'utilisateur");
         Text validationText = new Text(""); // texte pour valider la connexion
         
-        Button buttonValider = new Button ("Valider");
-        
         // création des champs
-        
-        TextField userField = new TextField();
-        TextField mdpField = new TextField();
-        ChoiceBox typeUser = new ChoiceBox(); 
-        typeUser.getItems().addAll("Laborantin","Chercheur");
-        typeUser.getSelectionModel().select(0);
         
         GridPane gridpane = new GridPane();
         gridpane.setAlignment(Pos.CENTER);
@@ -70,9 +66,6 @@ public class Connexion extends Parent {
     
         gridpane.add(mdpText,0,3);
         gridpane.add(mdpField,1,3);
-    
-        gridpane.add(typeUserText,0,4);
-        gridpane.add(typeUser,1,4);
  
         gridpane.add(buttonValider, 1, 8);      
         
@@ -92,20 +85,8 @@ public class Connexion extends Parent {
     
         GridPane.setHalignment(mdpText, HPos.RIGHT);
         GridPane.setHalignment(mdpField, HPos.LEFT);
-    
-        GridPane.setHalignment(typeUserText, HPos.LEFT);
-        GridPane.setHalignment(typeUser, HPos.LEFT);
         
-        buttonValider.setOnAction(j -> {
-            boolean co = connexionUtilisateur(userField.getText(), mdpField.getText(), typeUser.getValue().toString(), listeUtilisateurs);
-            if (co){
-                validationText.setText("Connexion réussie");
-            }
-            else{
-                validationText.setText("Erreur connexion");
-            }
-            this.getChildren().clear();
-        });
+        
         
         this.getChildren().add(gridpane); 
         
@@ -115,20 +96,36 @@ public class Connexion extends Parent {
      * Méthode pour connecter un utilisateur et retourner le type d'utilisateur connecte.
      * @param nomUtilisateur
      * @param mdp
-     * @param typeUtilisateur
      * @param listeUtilisateurs
      * @return 
      */
     
-    public boolean connexionUtilisateur(String nomUtilisateur, String mdp, String typeUtilisateur, ArrayList<Utilisateur> listeUtilisateurs){
+    public String connexionUtilisateur(String nomUtilisateur, String mdp, ArrayList<Utilisateur> listeUtilisateurs){
         for (Utilisateur u : listeUtilisateurs) {
-            if (u.getTypeUtilisateur().equals(typeUtilisateur) & u.getNomUtilisateur().equals(nomUtilisateur) & u.getMDP().equals(mdp)){
+            if (u.getNomUtilisateur().equals(nomUtilisateur) & u.getMDP().equals(mdp)){
                 u.setEstConnecte(true);
-                return true;
+                return u.getTypeUtilisateur();
             }
         }
-        return false;
+        return "";
     }
+
+    public Button getButtonValider() {
+        return buttonValider;
+    }
+
+    public void setButtonValider(Button buttonValider) {
+        this.buttonValider = buttonValider;
+    }
+    
+    public TextField getUserField() {
+        return userField;
+    }
+
+    public TextField getMdpField() {
+        return mdpField;
+    }
+    
     
     
 }
