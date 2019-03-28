@@ -32,6 +32,10 @@ public class ProjetIHMBD extends Application {
         
         Group root = new Group();
         
+        ListeExperiences listeExperiences;
+        listeExperiences = new ListeExperiences();
+        listeExperiences.addExperience("1", "Colorimétrique", "Chercheur", "Non", "27-03-2019", "", "", "","");
+        
         //création d'une liste d'utilisateur
         ArrayList<Utilisateur> utilisateurs = new ArrayList<>();
         Utilisateur u1 = new Utilisateur ("U1", "111", "Laborantin");
@@ -80,7 +84,7 @@ public class ProjetIHMBD extends Application {
         toolBar.getItems().add(buttonExit);
         
         Connexion connexion = new Connexion(utilisateurs);
-        TableauBordLab tableauBordLab = new TableauBordLab();
+        TableauBordLab tableauBordLab = new TableauBordLab(listeExperiences);
         TableGestionExp tableGestionExp = new TableGestionExp();
         
         // évenement pour le bouton gestion des expériences

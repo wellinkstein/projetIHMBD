@@ -23,19 +23,23 @@ import javafx.scene.text.Text;
 
 /**
  *
- * @author wellinkstein
+ * @author Jérémie
  */
 public class TableauBordLab extends Parent {
     
     
     private final TableView<Experience> tableBord = new TableView<>();
     private final ObservableList<Experience> data =
-                FXCollections.observableArrayList(
-                    new Experience("1", "Colorimétrique", "Chercheur", "Non", "27-03-2019", "", "", "",""));
+                FXCollections.observableArrayList();
     
-    public TableauBordLab (){
+    public TableauBordLab (ListeExperiences listeExperiences){
         
-        tableBord.setPrefSize( 600, 300 );
+        listeExperiences.addExperience("1","1","1","1","1","1","1","1","1");
+        
+        updateTable(listeExperiences);
+        
+        
+        //tableBord.setPrefSize( 600, 300 );
         
         final Label label = new Label("Expériences");
         label.setFont(new Font("Arial", 20));
@@ -103,6 +107,12 @@ public class TableauBordLab extends Parent {
         this.getChildren().add(main);
         
         
+    }
+    
+    public void updateTable(ListeExperiences listeExperiences){
+        for (int i=0 ; i<listeExperiences.getSizeListExp() ; i++){
+            data.add(listeExperiences.getExp(i));
+        }
     }
     
 }
