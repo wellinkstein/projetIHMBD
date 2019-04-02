@@ -3,10 +3,13 @@ package projetihmbd;
 import java.util.ArrayList;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
+import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToolBar;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
@@ -118,15 +121,56 @@ public class ProjetIHMBD extends Application {
         primaryStage.show();
         root.getChildren().add(connexion);
         
-        // Evénement pour le bouton valider de la fenêtre de connexion
+        // Evénement pour le bouton connexion de la fenêtre de connexion
         
         connexion.getButtonValider().setOnAction(j -> {
               String co = connexion.connexionUtilisateur(connexion.getUserField().getText(), connexion.getMdpField().getText(), utilisateurs);
+              gestionConnexion(co, toolBar, buttonConnexion, rightSpacer, textSeConnecter, buttonTableauBord, buttonDeconnexion, buttonGestionExp, tableauBordLab, tableGestionExp, connexion, root, scene, primaryStage);
               
-              // Affichage des items du panel en fonction du type d'utilisateur connecté
               
-              if (!co.equals("")){
-                  if(co.equals("Laborantin")){
+        });
+        
+        // Permet la validation des informations de connexion avec la touche "Entrer"
+        
+        connexion.getMdpField().setOnKeyPressed(new EventHandler<KeyEvent>() {
+
+            @Override
+            public void handle(KeyEvent event) {
+                if (event.getCode() == KeyCode.ENTER) {
+                     String co = connexion.connexionUtilisateur(connexion.getUserField().getText(), connexion.getMdpField().getText(), utilisateurs);
+                    gestionConnexion(co, toolBar, buttonConnexion, rightSpacer, textSeConnecter, buttonTableauBord, buttonDeconnexion, buttonGestionExp, tableauBordLab, tableGestionExp, connexion, root, scene, primaryStage);
+                }
+            }
+        });
+        
+        primaryStage.show(); 
+      
+    }
+    
+    /**
+     * Méthode permettant de gérer les évènements lors d'une tentative de connexion.
+     * Si les informations sont correctes, le panel de l'application est modifié en fonction
+     * du type d'utilisateur. Sinon le visuel de la fenêtre change pour informer
+     * l'utilisateur de son erreur.
+     * @param typeU
+     * @param toolBar
+     * @param buttonConnexion
+     * @param rightSpacer
+     * @param textSeConnecter
+     * @param buttonTableauBord
+     * @param buttonDeconnexion
+     * @param buttonGestionExp
+     * @param tableauBordLab
+     * @param tableGestionExp
+     * @param connexion
+     * @param root
+     * @param scene
+     * @param primaryStage 
+     */
+    
+    public void gestionConnexion(String typeU, ToolBar toolBar, Button buttonConnexion, Pane rightSpacer, Text textSeConnecter, Button buttonTableauBord, Button buttonDeconnexion, Button buttonGestionExp, TableauBordLab tableauBordLab, TableGestionExp tableGestionExp, Connexion connexion, Group root, Scene scene, Stage primaryStage){
+        if (!typeU.equals("")){
+                  if(typeU.equals("Laborantin")){
                         toolBar.getItems().remove(buttonConnexion);
                         toolBar.getItems().remove(rightSpacer);
                         toolBar.getItems().remove(textSeConnecter);
@@ -168,11 +212,8 @@ public class ProjetIHMBD extends Application {
               }
               
 
-        });
-        
-        primaryStage.show(); 
-      
-    }
+        }
+    
     
     
 
