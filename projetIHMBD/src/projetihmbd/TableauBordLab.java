@@ -25,7 +25,7 @@ public class TableauBordLab extends Parent {
     
     private final TableView<Experience> tableBord = new TableView<>();
     private final ObservableList<Experience> data =
-                FXCollections.observableArrayList();
+            FXCollections.observableArrayList();
     
     public TableauBordLab (ListeExperiences listeExperiences){
         
@@ -36,27 +36,27 @@ public class TableauBordLab extends Parent {
         
         final Label label = new Label("Expériences");
         label.setFont(new Font("Arial", 20));
-    
-    // titre
+        
+        // titre
         
         Text textTitre = new Text();
         textTitre.setText("Tableau de bord laborantin");
-        textTitre.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 20));    
+        textTitre.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 20));
         textTitre.setX(220);
-        textTitre.setY(220);   
+        textTitre.setY(220);
         textTitre.setFill(javafx.scene.paint.Color.BLACK);
         textTitre.setStrokeWidth(2);
         
-                TableColumn selectCol = new TableColumn("Sélectionner");
+        TableColumn selectCol = new TableColumn("Sélectionner");
         selectCol.setMinWidth(75);
         selectCol.setCellValueFactory(
                 new PropertyValueFactory<Experience, String>("checkbox2"));
         
-                TableColumn IdCol = new TableColumn("ID");
+        TableColumn IdCol = new TableColumn("ID");
         IdCol.setMinWidth(50);
         IdCol.setCellValueFactory(
-            new PropertyValueFactory<Experience, String>("idExperience"));
-       
+                new PropertyValueFactory<Experience, String>("idExperience"));
+        
         TableColumn tExpCol = new TableColumn("Type Expérience");
         tExpCol.setMinWidth(125);
         tExpCol.setCellValueFactory(
@@ -65,7 +65,7 @@ public class TableauBordLab extends Parent {
         TableColumn soumParCol = new TableColumn("Soumis par");
         soumParCol.setMinWidth(100);
         soumParCol.setCellValueFactory(
-        new PropertyValueFactory<Experience, String>("soumisPar"));
+                new PropertyValueFactory<Experience, String>("soumisPar"));
         soumParCol.setVisible(false);
         
         TableColumn urgCol = new TableColumn("Urgent");
@@ -81,26 +81,26 @@ public class TableauBordLab extends Parent {
         TableColumn dateDebutCol = new TableColumn("Début");
         dateDebutCol.setMinWidth(100);
         dateDebutCol.setCellValueFactory(
-        new PropertyValueFactory<Experience, String>("dateDebut"));
+                new PropertyValueFactory<Experience, String>("dateDebut"));
         
         TableColumn dateFinCol = new TableColumn("Fin");
         dateFinCol.setMinWidth(100);
         dateFinCol.setCellValueFactory(
-        new PropertyValueFactory<Experience, String>("dateFin"));
+                new PropertyValueFactory<Experience, String>("dateFin"));
         dateFinCol.setVisible(false);
         
         TableColumn dateTransCol = new TableColumn("Transmission");
         dateTransCol.setMinWidth(100);
         dateTransCol.setCellValueFactory(
-        new PropertyValueFactory<Experience, String>("dateTransmission"));
+                new PropertyValueFactory<Experience, String>("dateTransmission"));
         dateTransCol.setVisible(false);
         
         TableColumn dateValCol = new TableColumn("Validée");
         dateValCol.setMinWidth(100);
         dateValCol.setCellValueFactory(
-        new PropertyValueFactory<Experience, String>("validation"));
+                new PropertyValueFactory<Experience, String>("validation"));
         dateValCol.setVisible(false);
-
+        
         tableBord.setItems(data);
         tableBord.getColumns().addAll(selectCol, IdCol, tExpCol, soumParCol, urgCol, dateSouCol, dateDebutCol, dateFinCol, dateTransCol, dateValCol);
         

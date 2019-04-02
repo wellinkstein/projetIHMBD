@@ -24,11 +24,11 @@ public class Connexion extends Parent {
     TextField userField = new TextField("U1 pour lab ou U2 pour chercheur");
     TextField mdpField = new TextField("111 pour lab ou 222 pour chercheur");
     Text validationText = new Text(""); // texte pour valider la connexion
-
+    
     
     /**
      * Constructeur pour la connexion.
-     * @param listeUtilisateurs 
+     * @param listeUtilisateurs
      */
     
     public Connexion(ArrayList<Utilisateur> listeUtilisateurs){
@@ -37,18 +37,18 @@ public class Connexion extends Parent {
         
         Text textTitre = new Text();
         textTitre.setText("Connexion");
-        textTitre.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 20));    
+        textTitre.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 20));
         textTitre.setX(220);
-        textTitre.setY(220);   
+        textTitre.setY(220);
         textTitre.setFill(javafx.scene.paint.Color.BLACK);
         textTitre.setStrokeWidth(2);
         
         userField.setTooltip(
-            new Tooltip("Utilisateur")
+                new Tooltip("Utilisateur")
         );
         
         mdpField.setTooltip(
-            new Tooltip("Mot de passe")
+                new Tooltip("Mot de passe")
         );
         
         buttonValider.setTooltip(
@@ -57,7 +57,7 @@ public class Connexion extends Parent {
         
         // texte pour décrire les champs
         
-        Text userText = new Text("Nom utilisateur"); 
+        Text userText = new Text("Nom utilisateur");
         Text mdpText = new Text("Mot de passe");
         
         GridPane gridpane = new GridPane();
@@ -70,33 +70,33 @@ public class Connexion extends Parent {
         
         gridpane.add(userText,0,1);
         gridpane.add(userField,1,1);
-    
+        
         gridpane.add(mdpText,0,2);
         gridpane.add(mdpField,1,2);
         
-
- 
+        
+        
         gridpane.add(validationText,1,3);
         
-        gridpane.add(buttonValider, 1, 4);      
+        gridpane.add(buttonValider, 1, 4);
         
         gridpane.setVgap(10);
         gridpane.setHgap(10);
         gridpane.setPadding(new Insets(50));
-    
+        
         //alignement des champs du gridpane
         //GridPane.setHalignment(textTitre, HPos.CENTER);
         
         GridPane.setHalignment(userText, HPos.RIGHT);
         GridPane.setHalignment(userField, HPos.LEFT);
-    
+        
         GridPane.setHalignment(mdpText, HPos.RIGHT);
         GridPane.setHalignment(mdpField, HPos.LEFT);
         
         
         
-        this.getChildren().add(gridpane); 
-
+        this.getChildren().add(gridpane);
+        
         userField.setOnMouseClicked(e -> {
             if (userField.getText().equals("U1 pour lab ou U2 pour chercheur")){
                 userField.setText("");
@@ -105,19 +105,19 @@ public class Connexion extends Parent {
         
         mdpField.setOnMouseClicked(e -> {
             if (mdpField.getText().equals("111 pour lab ou 222 pour chercheur")) {
-                 mdpField.setText("");
-            } 
+                mdpField.setText("");
+            }
         });
         
-}
-        
+    }
+    
     
     /**
      * Méthode pour connecter un utilisateur et retourner le type d'utilisateur connecte.
      * @param nomUtilisateur
      * @param mdp
      * @param listeUtilisateurs
-     * @return 
+     * @return
      */
     
     public String connexionUtilisateur(String nomUtilisateur, String mdp, ArrayList<Utilisateur> listeUtilisateurs){
@@ -129,11 +129,11 @@ public class Connexion extends Parent {
         }
         return "";
     }
-
+    
     public Button getButtonValider() {
         return buttonValider;
     }
-
+    
     public void setButtonValider(Button buttonValider) {
         this.buttonValider = buttonValider;
     }
@@ -141,15 +141,15 @@ public class Connexion extends Parent {
     public TextField getUserField() {
         return userField;
     }
-
+    
     public TextField getMdpField() {
         return mdpField;
     }
-
+    
     public void setUserField(TextField userField) {
         this.userField = userField;
     }
-
+    
     public void setMdpField(TextField mdpField) {
         this.mdpField = mdpField;
     }

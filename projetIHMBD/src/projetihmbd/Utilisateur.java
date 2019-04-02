@@ -22,12 +22,12 @@ public class Utilisateur {
     public Utilisateur(String nomUtilisateur, String mdp, String typeUtilisateur){
         this.nomUtilisateur = nomUtilisateur;
         this.mdp = mdp;
-        this.typeUtilisateur = typeUtilisateur;    
+        this.typeUtilisateur = typeUtilisateur;
     }
     
     /**
      * Getter pour le type utilisateur
-     * @return 
+     * @return
      */
     
     public String getTypeUtilisateur (){
@@ -36,7 +36,7 @@ public class Utilisateur {
     
     /**
      * Getter pour le nom d'utilisateur
-     * @return 
+     * @return
      */
     
     public String getNomUtilisateur(){
@@ -45,7 +45,7 @@ public class Utilisateur {
     
     /**
      * Getter pour le mot de passe
-     * @return 
+     * @return
      */
     public String getMdp(){
         return mdp;
@@ -53,7 +53,7 @@ public class Utilisateur {
     
     /**
      * Getter pour retourner si l'utilisateur est connecté ou non.
-     * @return 
+     * @return
      */
     public boolean getEstConnecte(){
         return estConnecte;
@@ -61,7 +61,7 @@ public class Utilisateur {
     
     /**
      * Setter pour le type utilisateur
-     * @param typeUtilisateur 
+     * @param typeUtilisateur
      */
     public void setTypeUtilisateur(String typeUtilisateur){
         this.typeUtilisateur = typeUtilisateur;
@@ -69,15 +69,15 @@ public class Utilisateur {
     
     /**
      * Setter pour le nom utilisateur
-     * @param nomUtilisateur 
+     * @param nomUtilisateur
      */
     public void setNomUtilisateur (String nomUtilisateur){
         this.nomUtilisateur = nomUtilisateur;
-            }
+    }
     
     /**
      * Setter pour le mot de passe
-     * @param mdp 
+     * @param mdp
      */
     public void setMdp(String mdp){
         this.mdp = mdp;
@@ -85,7 +85,7 @@ public class Utilisateur {
     
     /**
      * Setter pour estConnecte
-     * @param estConnecte 
+     * @param estConnecte
      */
     public void setEstConnecte(boolean estConnecte){
         this.estConnecte = estConnecte;
