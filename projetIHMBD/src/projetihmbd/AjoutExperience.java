@@ -48,7 +48,7 @@ import projetihmbd.TableauBordLab;
         // titre
         
         Text textTitre = new Text();
-        textTitre.setText("Ajouter un nouvel expérience");
+        textTitre.setText("Ajouter une nouvelle expérience");
         textTitre.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 20));    
         textTitre.setX(220);
         textTitre.setY(220);   
