@@ -31,6 +31,7 @@ public class ProjetIHMBD extends Application {
     public void start(Stage primaryStage) {
         
         Group root = new Group();
+        root.setStyle("-fx-background-color: white");
         
         // création de la liste des expériences
         
@@ -46,15 +47,21 @@ public class ProjetIHMBD extends Application {
         utilisateurs.add(u2);
 
         ToolBar toolBar = new ToolBar();
+        toolBar.setStyle("-fx-background-color: white ; -fx-border-color: lightgrey");
+        //toolBar.setStyle(");
         
         VBox vBox = new VBox(toolBar);
         VBox vBox2 = new VBox(root);
         
+        vBox2.setStyle("-fx-background-color: white");
+        
         Scene scene = new Scene(vBox,600, 600);
         vBox.getChildren().add(vBox2);
+        
 
         primaryStage.setTitle("Gestion d'expériences de laboratoire");
         primaryStage.setScene(scene);
+        
         
          //  création des boutons
         Button buttonConnexion= new Button("Connexion");
@@ -206,9 +213,9 @@ public class ProjetIHMBD extends Application {
               }
               else{
                   connexion.setValidationText("Utilisateur inconnu");
-                  connexion.getValidationText().setFill(Color.RED);
-                  connexion.getUserField().setStyle("-fx-border-color: red;");
-                  connexion.getMdpField().setStyle("-fx-border-color: red;");
+                  connexion.getValidationText().setFill(Color.FIREBRICK);
+                  connexion.getUserField().setStyle("-fx-border-color: FIREBRICK;");
+                  connexion.getMdpField().setStyle("-fx-border-color: FIREBRICK;");
               }
               
 

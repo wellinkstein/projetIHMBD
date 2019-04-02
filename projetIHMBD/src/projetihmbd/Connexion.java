@@ -1,14 +1,11 @@
 package projetihmbd;
 
 import java.util.ArrayList;
-import javafx.event.EventHandler;
-import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
@@ -44,6 +41,8 @@ public class Connexion extends Parent {
         textTitre.setY(220);
         textTitre.setFill(javafx.scene.paint.Color.BLACK);
         textTitre.setStrokeWidth(2);
+        buttonValider.setStyle("-fx-background-color: lightblue");
+        //userField.setStyle("-fx-background-color: lightblue");
         
         userField.setTooltip(
                 new Tooltip("Utilisateur")
@@ -60,14 +59,17 @@ public class Connexion extends Parent {
         // texte pour décrire les champs
         
         Text userText = new Text("Nom utilisateur");
+        userText.setStyle("-fx-accent: lightblue");
+        
         Text mdpText = new Text("Mot de passe");
+        mdpText.setStyle("-fx-accent: lightblue");
         
         GridPane gridpane = new GridPane();
-        //gridpane.setAlignment(Pos.CENTER);
-        gridpane.setVgap(4);
-        gridpane.setHgap(10);
         
-        //ajout du texte et de l'image dans le gridpane
+        gridpane.setVgap(15);
+        gridpane.setHgap(20);
+        gridpane.setPadding(new Insets(50));
+        
         gridpane.add(textTitre,1,0);
         
         gridpane.add(userText,0,1);
@@ -76,38 +78,27 @@ public class Connexion extends Parent {
         gridpane.add(mdpText,0,2);
         gridpane.add(mdpField,1,2);
         
+        gridpane.add(buttonValider, 1, 3);
         
-        
-        gridpane.add(validationText,1,3);
-        
-        gridpane.add(buttonValider, 1, 4);
-        
-        gridpane.setVgap(10);
-        gridpane.setHgap(10);
-        gridpane.setPadding(new Insets(50));
-        
-        //alignement des champs du gridpane
-        //GridPane.setHalignment(textTitre, HPos.CENTER);
-        
-        GridPane.setHalignment(userText, HPos.RIGHT);
-        GridPane.setHalignment(userField, HPos.LEFT);
-        
-        GridPane.setHalignment(mdpText, HPos.RIGHT);
-        GridPane.setHalignment(mdpField, HPos.LEFT);
-        
+        gridpane.add(validationText,1,4);
         
         
         this.getChildren().add(gridpane);
         
         userField.setOnMouseClicked(e -> {
-            if (userField.getText().equals("U1 pour lab ou U2 pour chercheur")){
-                userField.setText(null);
+            if (userField.getText() != null) {
+                if (userField.getText().equals("U1 pour lab ou U2 pour chercheur")){
+                    userField.setText(null);
+                }
             }
         });
         
+
         mdpField.setOnMouseClicked(e -> {
-            if (mdpField.getText().equals("111 pour lab ou 222 pour chercheur")) {
-                mdpField.setText(null);
+            if (mdpField.getText() != null) {
+                if (mdpField.getText().equals("111 pour lab ou 222 pour chercheur")) {
+                    mdpField.setText(null);
+                }
             }
         });
         
