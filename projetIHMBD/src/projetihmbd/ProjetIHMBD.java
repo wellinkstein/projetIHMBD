@@ -163,7 +163,8 @@ public class ProjetIHMBD extends Application {
               else{
                   connexion.setValidationText("Utilisateur inconnu");
                   connexion.getValidationText().setFill(Color.RED);
-                  
+                  connexion.getUserField().setStyle("-fx-border-color: red;");
+                  connexion.getMdpField().setStyle("-fx-border-color: red;");
               }
               
 

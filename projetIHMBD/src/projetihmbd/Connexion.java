@@ -93,8 +93,6 @@ public class Connexion extends Parent {
         GridPane.setHalignment(mdpText, HPos.RIGHT);
         GridPane.setHalignment(mdpField, HPos.LEFT);
         
-        //GridPane.setHalignment(validationText, HPos.CENTER);
-        //GridPane.setHalignment(buttonValider, HPos.CENTER);
         
         
         this.getChildren().add(gridpane); 
@@ -103,7 +101,7 @@ public class Connexion extends Parent {
             if (userField.getText().equals("U1 pour lab ou U2 pour chercheur")){
                 userField.setText("");
             }
-        });    
+        });
         
         mdpField.setOnMouseClicked(e -> {
             if (mdpField.getText().equals("111 pour lab ou 222 pour chercheur")) {
