@@ -11,6 +11,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 /**
  * Noyau fonctionnel de l'application : lance l'application et 
@@ -56,7 +57,6 @@ public class ProjetIHMBD extends Application {
         Button buttonGestionExp= new Button("Gestion des expériences");
         Button buttonTableauBord = new Button ("Tableau de bord");
         Button buttonDeconnexion = new Button ("Déconnexion");
-        Button buttonExit = new Button("X");
         
         
         final Pane rightSpacer = new Pane(); 
@@ -65,9 +65,8 @@ public class ProjetIHMBD extends Application {
                 Priority.SOMETIMES
         );
         
-        toolBar.getItems().add(buttonConnexion);
         toolBar.getItems().add(rightSpacer);
-        toolBar.getItems().add(buttonExit);
+        toolBar.getItems().add(buttonConnexion);
         
         Connexion connexion = new Connexion(utilisateurs);
         TableauBordLab tableauBordLab = new TableauBordLab(listeExperiences);
@@ -83,12 +82,10 @@ public class ProjetIHMBD extends Application {
             root.getChildren().clear();
             toolBar.getItems().remove(buttonDeconnexion);
             toolBar.getItems().remove(rightSpacer);
-            toolBar.getItems().remove(buttonExit);
             toolBar.getItems().remove(buttonGestionExp);
             toolBar.getItems().remove(buttonTableauBord);
-            toolBar.getItems().add(buttonConnexion);
             toolBar.getItems().add(rightSpacer);
-            toolBar.getItems().add(buttonExit);
+            toolBar.getItems().add(buttonConnexion);
             root.getChildren().add(connexion);
             connexion.setUserFieldVal("U1 pour lab ou U2 pour chercheur");
             connexion.setMdpFieldVal("111 pour lab ou 222 pour chercheur");
@@ -102,12 +99,6 @@ public class ProjetIHMBD extends Application {
            root.getChildren().add(tableauBordLab);
         });
         
-        //évenement pour le bouton exit      
-        buttonExit.setOnAction(h -> {            
-            primaryStage.close();
-         
-        });
-        
         //évenement pour le bouton connexion
         
         buttonConnexion.setOnAction(h -> {
@@ -116,7 +107,11 @@ public class ProjetIHMBD extends Application {
         });
         
         // Affichage de la connexion lors du démarrage de l'application
-        
+        primaryStage.setResizable(false);
+        primaryStage.setHeight(300);
+        primaryStage.setWidth(400);
+        primaryStage.hide();
+        primaryStage.show();
         root.getChildren().add(connexion);
         
         // Evénement pour le bouton valider de la fenêtre de connexion
@@ -130,29 +125,38 @@ public class ProjetIHMBD extends Application {
                   if(co.equals("Laborantin")){
                         toolBar.getItems().remove(buttonConnexion);
                         toolBar.getItems().remove(rightSpacer);
-                        toolBar.getItems().remove(buttonExit);
-                        toolBar.getItems().add(buttonDeconnexion);
                         toolBar.getItems().add(buttonTableauBord);
                         toolBar.getItems().add(rightSpacer);
-                        toolBar.getItems().add(buttonExit);
+                        toolBar.getItems().add(buttonDeconnexion);
                         root.getChildren().clear();
                         root.getChildren().add(tableauBordLab);
-                        
+                        primaryStage.setResizable(false);
+                        primaryStage.setHeight(600);
+                        primaryStage.setWidth(800);
+                        primaryStage.hide();
+                        primaryStage.show();
+                  
                   }
                   else{
                         toolBar.getItems().remove(buttonConnexion);
                         toolBar.getItems().remove(rightSpacer);
-                        toolBar.getItems().remove(buttonExit);
-                        toolBar.getItems().add(buttonDeconnexion);
                         toolBar.getItems().add(buttonGestionExp);
                         toolBar.getItems().add(rightSpacer);
-                        toolBar.getItems().add(buttonExit);
+                        toolBar.getItems().add(buttonDeconnexion);
                         root.getChildren().clear();
                         root.getChildren().add(tableGestionExp);
+                        primaryStage.setResizable(false);
+                        primaryStage.setHeight(600);
+                        primaryStage.setWidth(800);
+                        primaryStage.hide();
+                        primaryStage.show();
                   }
                   
+                  connexion.setValidationText("");
               }
               else{
+                  connexion.setValidationText("Utilisateur inconnu");
+                  connexion.getValidationText().setFill(Color.RED);
                   
               }
               

@@ -23,6 +23,7 @@ public class Connexion extends Parent {
     Button buttonValider = new Button("Valider");
     TextField userField = new TextField("U1 pour lab ou U2 pour chercheur");
     TextField mdpField = new TextField("111 pour lab ou 222 pour chercheur");
+    Text validationText = new Text(""); // texte pour valider la connexion
 
     
     /**
@@ -46,33 +47,33 @@ public class Connexion extends Parent {
         
         Text userText = new Text("Nom utilisateur"); 
         Text mdpText = new Text("Mot de passe");
-        Text validationText = new Text(""); // texte pour valider la connexion
-        
-        // création des champs
         
         GridPane gridpane = new GridPane();
-        gridpane.setAlignment(Pos.CENTER);
+        //gridpane.setAlignment(Pos.CENTER);
+        gridpane.setVgap(4);
+        gridpane.setHgap(10);
         
         //ajout du texte et de l'image dans le gridpane
         gridpane.add(textTitre,1,0);
         
-        gridpane.add(userText,0,2);
-        gridpane.add(userField,1,2);
+        gridpane.add(userText,0,1);
+        gridpane.add(userField,1,1);
     
-        gridpane.add(mdpText,0,3);
-        gridpane.add(mdpField,1,3);
+        gridpane.add(mdpText,0,2);
+        gridpane.add(mdpField,1,2);
+        
+
  
-        gridpane.add(buttonValider, 1, 8);      
+        gridpane.add(validationText,1,3);
         
-        gridpane.add(validationText,1,9);
-        
+        gridpane.add(buttonValider, 1, 4);      
         
         gridpane.setVgap(10);
         gridpane.setHgap(10);
         gridpane.setPadding(new Insets(50));
     
         //alignement des champs du gridpane
-        GridPane.setHalignment(textTitre, HPos.CENTER);
+        //GridPane.setHalignment(textTitre, HPos.CENTER);
         
         GridPane.setHalignment(userText, HPos.RIGHT);
         GridPane.setHalignment(userField, HPos.LEFT);
@@ -80,9 +81,26 @@ public class Connexion extends Parent {
         GridPane.setHalignment(mdpText, HPos.RIGHT);
         GridPane.setHalignment(mdpField, HPos.LEFT);
         
-        boolean add = this.getChildren().add(gridpane); 
+        //GridPane.setHalignment(validationText, HPos.CENTER);
+        //GridPane.setHalignment(buttonValider, HPos.CENTER);
         
-    }
+        
+        this.getChildren().add(gridpane); 
+
+        userField.setOnMouseClicked(e -> {
+            if (userField.getText().equals("U1 pour lab ou U2 pour chercheur")){
+                userField.setText("");
+            }
+        });    
+        
+        mdpField.setOnMouseClicked(e -> {
+            if (mdpField.getText().equals("111 pour lab ou 222 pour chercheur")) {
+                 mdpField.setText("");
+            } 
+        });
+        
+}
+        
     
     /**
      * Méthode pour connecter un utilisateur et retourner le type d'utilisateur connecte.
@@ -132,6 +150,14 @@ public class Connexion extends Parent {
     
     public void setMdpFieldVal(String mdpField){
         this.mdpField.setText(mdpField);
+    }
+    
+    public void setValidationText(String validationText){
+        this.validationText.setText(validationText);
+    }
+    
+    public Text getValidationText(){
+        return validationText;
     }
     
 }
