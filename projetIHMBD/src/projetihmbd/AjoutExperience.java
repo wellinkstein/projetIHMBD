@@ -57,27 +57,16 @@ import projetihmbd.TableauBordLab;
 
         // texte pour décrire les champs
         
-        Text idExperienceText = new Text("IdExperience"); 
+        Text idExperienceText = new Text("Id"); 
         Text typeExperienceText = new Text("TypeExperience"); 
         Text urgentText = new Text("urgent"); 
-        Text soumisParText = new Text ("soumisPar");
-        Text dateSoumissionText = new Text ("dateSoumission");
-        Text dateDebutText = new Text ("date de début");
-        Text dateFinText = new Text ("dateFin");
-        Text dateTransmissionText = new Text("date de transmission");
-        Text validationText = new Text("validation");
+        
         Text AjouterText = new Text(""); // texte pour valider l'ajout d'un expérience
         
         // création des champs
         
         TextField idExperienceField = new TextField();
         TextField typeExperienceField = new TextField();
-        TextField soumisParField = new TextField();
-        TextField dateSoumissionField = new TextField();
-        TextField dateDebutField = new TextField();
-        TextField dateFinField = new TextField();
-        TextField dateTransmissionField = new TextField();
-        TextField validationField = new TextField();
         ChoiceBox urgentchoiceBox= new ChoiceBox(); 
         urgentchoiceBox.getItems().addAll
          ("oui","non");
@@ -116,21 +105,11 @@ import projetihmbd.TableauBordLab;
     
         gridpane.add(typeExperienceText,0,3);
         gridpane.add(typeExperienceField,1,3);
-    
-        gridpane.add(soumisParText,0,4);
-        gridpane.add(soumisParField,1,4);
+   
     
         gridpane.add(urgentText,0,5);
         gridpane.add(urgentchoiceBox,1,5);
- 
-        gridpane.add(dateSoumissionText,0,6);
-        gridpane.add(dateSoumissionField,1,6);
-        
-        gridpane.add(dateTransmissionText,0,7);
-        gridpane.add(dateTransmissionField,1,7);
-        
-        gridpane.add(validationText,0,8);
-        gridpane.add(validationField,1,8);
+
         
         gridpane.add(buttonAjouter, 1, 12);       
         gridpane.add(AjouterText,1,13);
@@ -150,26 +129,15 @@ import projetihmbd.TableauBordLab;
         GridPane.setHalignment(typeExperienceText, HPos.RIGHT);
         GridPane.setHalignment(typeExperienceField, HPos.LEFT);
     
-        GridPane.setHalignment(soumisParText, HPos.RIGHT);
-        GridPane.setHalignment(soumisParField, HPos.LEFT);
-    
         GridPane.setHalignment(urgentText, HPos.RIGHT);
         GridPane.setHalignment(urgentchoiceBox, HPos.LEFT);
         
-        GridPane.setHalignment(dateSoumissionText, HPos.RIGHT);
-        GridPane.setHalignment(dateSoumissionField, HPos.LEFT);
-        
-        GridPane.setHalignment(dateTransmissionText, HPos.RIGHT);
-        GridPane.setHalignment(dateTransmissionField, HPos.LEFT);
-        
-        GridPane.setHalignment(validationText, HPos.RIGHT);
-        GridPane.setHalignment(validationField, HPos.LEFT);
+      
     
           buttonAjouter.setOnAction((ActionEvent f) -> {
-              listeExperiences.addExperience(idExperienceField.getText(), typeExperienceField.getText(), soumisParField.getText(), urgentchoiceBox.getValue().toString(), dateSoumissionField.getText(),  dateTransmissionField.getText(),  dateDebutField.getText(), dateFinField.getText(), validationField.getText());
+              listeExperiences.addExperience(idExperienceField.getText(), typeExperienceField.getText(), "", urgentchoiceBox.getValue().toString(),"","","","","");
               
-              gridpane.getChildren().add(gridpane);
-              
+             
          } );
         this.getChildren().add(gridpane);
   } 
