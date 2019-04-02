@@ -136,7 +136,7 @@ public class ProjetIHMBD extends Application {
                         root.getChildren().clear();
                         root.getChildren().add(tableauBordLab);
                         primaryStage.setResizable(true);
-                        primaryStage.setHeight(600);
+                        primaryStage.setHeight(800);
                         primaryStage.setWidth(800);
                         primaryStage.hide();
                         primaryStage.show();
@@ -152,7 +152,7 @@ public class ProjetIHMBD extends Application {
                         root.getChildren().clear();
                         root.getChildren().add(tableGestionExp);
                         primaryStage.setResizable(true);
-                        primaryStage.setHeight(600);
+                        primaryStage.setHeight(800);
                         primaryStage.setWidth(800);
                         primaryStage.hide();
                         primaryStage.show();
