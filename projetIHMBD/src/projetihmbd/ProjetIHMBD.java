@@ -130,7 +130,7 @@ public class ProjetIHMBD extends Application {
                         toolBar.getItems().add(buttonDeconnexion);
                         root.getChildren().clear();
                         root.getChildren().add(tableauBordLab);
-                        primaryStage.setResizable(false);
+                        primaryStage.setResizable(true);
                         primaryStage.setHeight(600);
                         primaryStage.setWidth(800);
                         primaryStage.hide();
@@ -145,7 +145,7 @@ public class ProjetIHMBD extends Application {
                         toolBar.getItems().add(buttonDeconnexion);
                         root.getChildren().clear();
                         root.getChildren().add(tableGestionExp);
-                        primaryStage.setResizable(false);
+                        primaryStage.setResizable(true);
                         primaryStage.setHeight(600);
                         primaryStage.setWidth(800);
                         primaryStage.hide();
