@@ -3,10 +3,10 @@ package projetihmbd;
 import java.util.ArrayList;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
@@ -20,7 +20,7 @@ import javafx.scene.text.Text;
  */
 public class Connexion extends Parent {
     
-    Button buttonValider = new Button("Valider");
+    Button buttonValider = new Button("Connexion");
     TextField userField = new TextField("U1 pour lab ou U2 pour chercheur");
     TextField mdpField = new TextField("111 pour lab ou 222 pour chercheur");
     Text validationText = new Text(""); // texte pour valider la connexion
@@ -42,6 +42,18 @@ public class Connexion extends Parent {
         textTitre.setY(220);   
         textTitre.setFill(javafx.scene.paint.Color.BLACK);
         textTitre.setStrokeWidth(2);
+        
+        userField.setTooltip(
+            new Tooltip("Utilisateur")
+        );
+        
+        mdpField.setTooltip(
+            new Tooltip("Mot de passe")
+        );
+        
+        buttonValider.setTooltip(
+                new Tooltip("Se connecter")
+        );
         
         // texte pour décrire les champs
         
