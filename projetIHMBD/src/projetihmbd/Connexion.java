@@ -1,12 +1,14 @@
 package projetihmbd;
 
 import java.util.ArrayList;
+import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
@@ -99,13 +101,13 @@ public class Connexion extends Parent {
         
         userField.setOnMouseClicked(e -> {
             if (userField.getText().equals("U1 pour lab ou U2 pour chercheur")){
-                userField.setText("");
+                userField.setText(null);
             }
         });
         
         mdpField.setOnMouseClicked(e -> {
             if (mdpField.getText().equals("111 pour lab ou 222 pour chercheur")) {
-                mdpField.setText("");
+                mdpField.setText(null);
             }
         });
         
