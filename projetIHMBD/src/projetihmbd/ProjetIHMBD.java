@@ -12,6 +12,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 /**
  * Noyau fonctionnel de l'application : lance l'application et 
@@ -57,7 +58,7 @@ public class ProjetIHMBD extends Application {
         Button buttonGestionExp= new Button("Gestion des expériences");
         Button buttonTableauBord = new Button ("Tableau de bord");
         Button buttonDeconnexion = new Button ("Déconnexion");
-        
+        Text textSeConnecter = new Text("Se connecter");
         
         final Pane rightSpacer = new Pane(); 
         HBox.setHgrow(
@@ -65,8 +66,7 @@ public class ProjetIHMBD extends Application {
                 Priority.SOMETIMES
         );
         
-        toolBar.getItems().add(rightSpacer);
-        toolBar.getItems().add(buttonConnexion);
+        toolBar.getItems().add(textSeConnecter);
         
         Connexion connexion = new Connexion(utilisateurs);
         TableauBordLab tableauBordLab = new TableauBordLab(listeExperiences);
@@ -84,11 +84,15 @@ public class ProjetIHMBD extends Application {
             toolBar.getItems().remove(rightSpacer);
             toolBar.getItems().remove(buttonGestionExp);
             toolBar.getItems().remove(buttonTableauBord);
-            toolBar.getItems().add(rightSpacer);
-            toolBar.getItems().add(buttonConnexion);
+            toolBar.getItems().add(textSeConnecter);
             root.getChildren().add(connexion);
             connexion.setUserFieldVal("U1 pour lab ou U2 pour chercheur");
             connexion.setMdpFieldVal("111 pour lab ou 222 pour chercheur");
+            primaryStage.setResizable(false);
+            primaryStage.setHeight(300);
+            primaryStage.setWidth(400);
+            primaryStage.hide();
+            primaryStage.show();
 
         });
         
@@ -125,6 +129,7 @@ public class ProjetIHMBD extends Application {
                   if(co.equals("Laborantin")){
                         toolBar.getItems().remove(buttonConnexion);
                         toolBar.getItems().remove(rightSpacer);
+                        toolBar.getItems().remove(textSeConnecter);
                         toolBar.getItems().add(buttonTableauBord);
                         toolBar.getItems().add(rightSpacer);
                         toolBar.getItems().add(buttonDeconnexion);
@@ -140,6 +145,7 @@ public class ProjetIHMBD extends Application {
                   else{
                         toolBar.getItems().remove(buttonConnexion);
                         toolBar.getItems().remove(rightSpacer);
+                        toolBar.getItems().remove(textSeConnecter);
                         toolBar.getItems().add(buttonGestionExp);
                         toolBar.getItems().add(rightSpacer);
                         toolBar.getItems().add(buttonDeconnexion);
