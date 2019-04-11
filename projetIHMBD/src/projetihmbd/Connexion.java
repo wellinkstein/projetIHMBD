@@ -20,8 +20,8 @@ import javafx.scene.text.Text;
 public class Connexion extends Parent {
     
     Button buttonValider = new Button("Connexion");
-    TextField userField = new TextField("U1 pour lab ou U2 pour chercheur");
-    TextField mdpField = new TextField("111 pour lab ou 222 pour chercheur");
+    TextField userField = new TextField("U1 lab ou U2 chercheur");
+    TextField mdpField = new TextField("111 lab ou 222 chercheur");
     Text validationText = new Text(""); // texte pour valider la connexion
     
     
@@ -31,6 +31,9 @@ public class Connexion extends Parent {
      */
     
     public Connexion(ArrayList<Utilisateur> listeUtilisateurs){
+        
+        userField.requestFocus();
+        userField.selectAll();
         
         // titre
         
@@ -87,7 +90,7 @@ public class Connexion extends Parent {
         
         userField.setOnMouseClicked(e -> {
             if (userField.getText() != null) {
-                if (userField.getText().equals("U1 pour lab ou U2 pour chercheur")){
+                if (userField.getText().equals("U1 lab ou U2 chercheur")){
                     userField.setText(null);
                 }
             }
@@ -96,7 +99,7 @@ public class Connexion extends Parent {
 
         mdpField.setOnMouseClicked(e -> {
             if (mdpField.getText() != null) {
-                if (mdpField.getText().equals("111 pour lab ou 222 pour chercheur")) {
+                if (mdpField.getText().equals("111 lab ou 222 chercheur")) {
                     mdpField.setText(null);
                 }
             }
