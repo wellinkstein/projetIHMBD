@@ -1,12 +1,16 @@
 package projetihmbd;
 
 import java.util.ArrayList;
+import java.util.Optional;
 import javafx.application.Application;
-import static javafx.application.Application.launch;
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ToolBar;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -62,12 +66,27 @@ public class ProjetIHMBD extends Application {
         primaryStage.setTitle("Gestion d'expériences de laboratoire");
         primaryStage.setScene(scene);
         
+        String IDLE_DECO_STYLE = "-fx-background-color: FIREBRICK;";
+        String HOVERED_DECO_STYLE = "-fx-background-color: RED;";
+        
+        String IDLE_OTHER_STYLE = "-fx-background-color: lightgrey;";
+        String HOVERED_OTHER_STYLE = "-fx-background-color: grey;";
         
          //  création des boutons
         Button buttonConnexion= new Button("Connexion");
         Button buttonGestionExp= new Button("Gestion des expériences");
         Button buttonTableauBord = new Button ("Tableau de bord");
         Button buttonDeconnexion = new Button ("Déconnexion");
+        buttonDeconnexion.setStyle(IDLE_DECO_STYLE);
+        buttonDeconnexion.setOnMouseEntered(e -> buttonDeconnexion.setStyle(HOVERED_DECO_STYLE));
+        buttonDeconnexion.setOnMouseExited(e -> buttonDeconnexion.setStyle(IDLE_DECO_STYLE));
+        buttonGestionExp.setStyle(IDLE_OTHER_STYLE);
+        buttonGestionExp.setOnMouseEntered(e -> buttonGestionExp.setStyle(HOVERED_OTHER_STYLE));
+        buttonGestionExp.setOnMouseExited(e -> buttonGestionExp.setStyle(IDLE_OTHER_STYLE));
+        buttonTableauBord.setStyle(IDLE_OTHER_STYLE);
+        buttonTableauBord.setOnMouseEntered(e -> buttonTableauBord.setStyle(HOVERED_OTHER_STYLE));
+        buttonTableauBord.setOnMouseExited(e -> buttonTableauBord.setStyle(IDLE_OTHER_STYLE));
+        
         Text textSeConnecter = new Text("Se connecter");
         
         final Pane rightSpacer = new Pane(); 
@@ -79,6 +98,8 @@ public class ProjetIHMBD extends Application {
         toolBar.getItems().add(textSeConnecter);
         
         Connexion connexion = new Connexion(utilisateurs);
+        connexion.getUserField().setStyle("-fx-border-color: GREY;");
+        connexion.getMdpField().setStyle("-fx-border-color: GREY;");
         TableauBordLab tableauBordLab = new TableauBordLab(listeExperiences);
         TableGestionExp tableGestionExp = new TableGestionExp(listeExperiences);
         
@@ -96,8 +117,8 @@ public class ProjetIHMBD extends Application {
             toolBar.getItems().remove(buttonTableauBord);
             toolBar.getItems().add(textSeConnecter);
             root.getChildren().add(connexion);
-            connexion.setUserFieldVal("U1 pour lab ou U2 pour chercheur");
-            connexion.setMdpFieldVal("111 pour lab ou 222 pour chercheur");
+            connexion.setUserFieldVal("U1 lab ou U2 chercheur");
+            connexion.setMdpFieldVal("111 lab ou 222 chercheur");
             primaryStage.setResizable(false);
             primaryStage.setHeight(300);
             primaryStage.setWidth(400);
@@ -133,8 +154,6 @@ public class ProjetIHMBD extends Application {
         connexion.getButtonValider().setOnAction(j -> {
               String co = connexion.connexionUtilisateur(connexion.getUserField().getText(), connexion.getMdpField().getText(), utilisateurs);
               gestionConnexion(co, toolBar, buttonConnexion, rightSpacer, textSeConnecter, buttonTableauBord, buttonDeconnexion, buttonGestionExp, tableauBordLab, tableGestionExp, connexion, root, scene, primaryStage);
-              
-              
         });
         
         // Permet la validation des informations de connexion avec la touche "Entrer"
@@ -147,6 +166,22 @@ public class ProjetIHMBD extends Application {
                      String co = connexion.connexionUtilisateur(connexion.getUserField().getText(), connexion.getMdpField().getText(), utilisateurs);
                     gestionConnexion(co, toolBar, buttonConnexion, rightSpacer, textSeConnecter, buttonTableauBord, buttonDeconnexion, buttonGestionExp, tableauBordLab, tableGestionExp, connexion, root, scene, primaryStage);
                 }
+            }
+        });
+        
+        // dialogue pour confirmer la fermeture du programme
+        
+        primaryStage.setOnCloseRequest(event -> {
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+            alert.setTitle("Quitter");
+            alert.setContentText("Souhaitez-vous vraiment quiter ?");
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK){
+                   
+                alert.close();
+            }
+            else{
+               event.consume();
             }
         });
         
@@ -186,6 +221,8 @@ public class ProjetIHMBD extends Application {
                         toolBar.getItems().add(buttonDeconnexion);
                         root.getChildren().clear();
                         root.getChildren().add(tableauBordLab);
+                        connexion.getUserField().setStyle("-fx-border-color: GREY;");
+                        connexion.getMdpField().setStyle("-fx-border-color: GREY;");
                         primaryStage.setResizable(true);
                         primaryStage.setHeight(800);
                         primaryStage.setWidth(800);
@@ -202,6 +239,8 @@ public class ProjetIHMBD extends Application {
                         toolBar.getItems().add(buttonDeconnexion);
                         root.getChildren().clear();
                         root.getChildren().add(tableGestionExp);
+                        connexion.getUserField().setStyle("-fx-border-color: GREY;");
+                        connexion.getMdpField().setStyle("-fx-border-color: GREY;");
                         primaryStage.setResizable(true);
                         primaryStage.setHeight(800);
                         primaryStage.setWidth(800);
@@ -217,13 +256,8 @@ public class ProjetIHMBD extends Application {
                   connexion.getUserField().setStyle("-fx-border-color: FIREBRICK;");
                   connexion.getMdpField().setStyle("-fx-border-color: FIREBRICK;");
               }
-              
-
         }
     
-    
-    
-
     public static void main(String[] args) {
     launch(args);
     

@@ -44,7 +44,9 @@ public class Connexion extends Parent {
         textTitre.setY(220);
         textTitre.setFill(javafx.scene.paint.Color.BLACK);
         textTitre.setStrokeWidth(2);
-        buttonValider.setStyle("-fx-background-color: lightblue");
+        buttonValider.setStyle("-fx-background-color: lightgrey");
+        buttonValider.setOnMouseEntered(e-> buttonValider.setStyle("-fx-background-color: lightblue"));
+        buttonValider.setOnMouseExited(e-> buttonValider.setStyle("-fx-background-color: lightgrey"));
         //userField.setStyle("-fx-background-color: lightblue");
         
         userField.setTooltip(

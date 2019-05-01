@@ -104,8 +104,17 @@ public class TableauBordLab extends Parent {
         tableBord.setItems(data);
         tableBord.getColumns().addAll(selectCol, IdCol, tExpCol, soumParCol, urgCol, dateSouCol, dateDebutCol, dateFinCol, dateTransCol, dateValCol);
         
+        String IDLE_OTHER_STYLE = "-fx-background-color: lightgrey;";
+        String HOVERED_OTHER_STYLE = "-fx-background-color: grey;";
+        
         Button buttonValid = new Button ("Valider");
         Button buttonEtditer = new Button ("Editer");
+        buttonValid.setStyle(IDLE_OTHER_STYLE);
+        buttonValid.setOnMouseEntered(e -> buttonValid.setStyle(HOVERED_OTHER_STYLE));
+        buttonValid.setOnMouseExited(e -> buttonValid.setStyle(IDLE_OTHER_STYLE));
+        buttonEtditer.setStyle(IDLE_OTHER_STYLE);
+        buttonEtditer.setOnMouseEntered(e -> buttonEtditer.setStyle(HOVERED_OTHER_STYLE));
+        buttonEtditer.setOnMouseExited(e -> buttonEtditer.setStyle(IDLE_OTHER_STYLE));
         
         final VBox vbox = new VBox();
         vbox.setSpacing(5);

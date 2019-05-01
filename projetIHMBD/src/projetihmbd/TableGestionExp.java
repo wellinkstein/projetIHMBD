@@ -115,8 +115,18 @@ public class TableGestionExp extends Parent {
         tableBord.setItems(data);
         tableBord.getColumns().addAll(selectCol, IdCol, tExpCol, soumParCol, urgCol, dateSouCol, dateDebutCol, dateFinCol, dateTransCol, dateValCol, checkbox2Col);
         
+        String IDLE_OTHER_STYLE = "-fx-background-color: lightgrey;";
+        String HOVERED_OTHER_STYLE = "-fx-background-color: grey;";
+        
+        
         Button buttonAjouter = new Button ("Ajouter");
         Button buttonEtditer = new Button ("Editer");
+        buttonAjouter.setStyle(IDLE_OTHER_STYLE);
+        buttonAjouter.setOnMouseEntered(e -> buttonAjouter.setStyle(HOVERED_OTHER_STYLE));
+        buttonAjouter.setOnMouseExited(e -> buttonAjouter.setStyle(IDLE_OTHER_STYLE));
+        buttonEtditer.setStyle(IDLE_OTHER_STYLE);
+        buttonEtditer.setOnMouseEntered(e -> buttonEtditer.setStyle(HOVERED_OTHER_STYLE));
+        buttonEtditer.setOnMouseExited(e -> buttonEtditer.setStyle(IDLE_OTHER_STYLE));
         
         final VBox vbox = new VBox();
         vbox.setSpacing(5);
