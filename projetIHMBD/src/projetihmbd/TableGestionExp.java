@@ -57,12 +57,12 @@ public class TableGestionExp extends Parent {
                 new PropertyValueFactory<Experience, String>("checkbox1"));
         
         TableColumn IdCol = new TableColumn("ID");
-        IdCol.setMinWidth(100);
+        IdCol.setMinWidth(80);
         IdCol.setCellValueFactory(
                 new PropertyValueFactory<Experience, String>("idExperience"));
         
         TableColumn tExpCol = new TableColumn("Type Expérience");
-        tExpCol.setMinWidth(125);
+        tExpCol.setMinWidth(130);
         tExpCol.setCellValueFactory(
                 new PropertyValueFactory<Experience, String>("typeExperience"));
         
@@ -100,7 +100,7 @@ public class TableGestionExp extends Parent {
         dateTransCol.setVisible(false);
         
         TableColumn dateValCol = new TableColumn("Validée");
-        dateValCol.setMinWidth(100);
+        dateValCol.setMinWidth(75);
         dateValCol.setCellValueFactory(
                 new PropertyValueFactory<Experience, String>("validation"));
         

@@ -58,7 +58,7 @@ public class TableauBordLab extends Parent {
                 new PropertyValueFactory<Experience, String>("idExperience"));
         
         TableColumn tExpCol = new TableColumn("Type Expérience");
-        tExpCol.setMinWidth(125);
+        tExpCol.setMinWidth(240);
         tExpCol.setCellValueFactory(
                 new PropertyValueFactory<Experience, String>("typeExperience"));
         
