@@ -114,6 +114,7 @@ public class TableGestionExp extends Parent {
         
         tableBord.setItems(data);
         tableBord.getColumns().addAll(selectCol, IdCol, tExpCol, soumParCol, urgCol, dateSouCol, dateDebutCol, dateFinCol, dateTransCol, dateValCol, checkbox2Col);
+        tableBord.setPrefSize(700, 400);
         
         String IDLE_OTHER_STYLE = "-fx-background-color: lightgrey;";
         String HOVERED_OTHER_STYLE = "-fx-background-color: grey;";

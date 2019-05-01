@@ -3,7 +3,6 @@ package projetihmbd;
 import java.util.ArrayList;
 import java.util.Optional;
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -175,6 +174,8 @@ public class ProjetIHMBD extends Application {
             Alert alert = new Alert(AlertType.CONFIRMATION);
             alert.setTitle("Quitter");
             alert.setContentText("Souhaitez-vous vraiment quiter ?");
+            //alert.setY();
+            //alter.setX();
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK){
                    
@@ -223,8 +224,8 @@ public class ProjetIHMBD extends Application {
                         root.getChildren().add(tableauBordLab);
                         connexion.getUserField().setStyle("-fx-border-color: GREY;");
                         connexion.getMdpField().setStyle("-fx-border-color: GREY;");
-                        primaryStage.setResizable(true);
-                        primaryStage.setHeight(800);
+                        primaryStage.setResizable(false);
+                        primaryStage.setHeight(540);
                         primaryStage.setWidth(800);
                         primaryStage.hide();
                         primaryStage.show();
@@ -241,8 +242,8 @@ public class ProjetIHMBD extends Application {
                         root.getChildren().add(tableGestionExp);
                         connexion.getUserField().setStyle("-fx-border-color: GREY;");
                         connexion.getMdpField().setStyle("-fx-border-color: GREY;");
-                        primaryStage.setResizable(true);
-                        primaryStage.setHeight(800);
+                        primaryStage.setResizable(false);
+                        primaryStage.setHeight(540);
                         primaryStage.setWidth(800);
                         primaryStage.hide();
                         primaryStage.show();
